@@ -1,78 +1,82 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/attraction.css')}}" />
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin=""
+/>
+<script
+  src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""
+></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.2/proj4.js"></script>
+<style type="text/css">
+  #mapid {
+    height: 480px;
+  }
+</style>
 
+{% endblock %} {% block title %} 台北一日遊 - 景點 {% endblock %} {% block main %}
+<div class="whole-container">
+  <div class="top-container">
+    <section class="carousel">
+      <div class="loader" id="loader"></div>
+      <img src="{{url_for('static', filename='images/btn_leftArrow.png')}}" alt="" class="left" id="prevBtn" />
+      <img src="{{url_for('static', filename='images/btn_rightArrow.png')}}" alt="" class="right" id="nextBtn" />
+      <div class="indicator-group" id="indicatorGroup"></div>
+      <div class="carousel-slide" id="carouselSlide"></div>
+    </section>
 
-{% block css %}
-<link rel="stylesheet" href="{{url_for('static', filename='css/attraction.css')}}">
-{% endblock %}
+    <section class="attraction-booking">
+      <h3 class="header3-bold title" id="name"></h3>
+      <p class="body-reg info"><span id="category"></span><span id="mrt"></span></p>
 
+      <article class="booking-area">
+        <p class="body-bold">訂購導覽行程</p>
+        <p class="content-reg">以此景點為中心的一日行程，帶您探索城市角落故事</p>
 
-{% block title %}
-    台北一日遊 - 景點
-{% endblock %}
+        <form action="/booking" class="booking-form">
+          <div class="date-selection form-control">
+            <label for="bookingDate" class="body-bold">選擇日期：</label>
+            <input type="date" name="date" id="bookingDate" min="2021-05-03" />
+            <small>Error Message</small>
+          </div>
+          <div class="time-selection" id="timeSelect">
+            <span class="body-bold">選擇時間：</span>
+            <input type="radio" id="morning" name="time" value="morning" checked />
+            <label for="morning" class="body-reg label-morning" class="morning-label">上半天</label>
+            <input type="radio" id="afternoon" name="time" value="afternoon" />
+            <label for="afternoon" class="body-reg">下半天</label>
+          </div>
+          <p>
+            <span class="body-bold price-title">導覽費用：</span><span class="body-reg" id="price">新台幣 2000 元</span>
+          </p>
+          <button class="button-reg" id="bookingBtn">開始預訂行程</button>
+        </form>
+      </article>
+    </section>
+  </div>
 
+  <div class="division-line"></div>
 
-{% block main %}
-    <div class="whole-container">
-        <div class="top-container">
+  <div class="bottom-container">
+    <article class="content-reg description" id="description"></article>
 
-            <section class="carousel">
-                <div class="loader" id="loader"></div>
-                <img src="{{url_for('static', filename='images/btn_leftArrow.png')}}" alt="" class="left" id="prevBtn">
-                <img src="{{url_for('static', filename='images/btn_rightArrow.png')}}" alt="" class="right" id="nextBtn">
-                <div class="indicator-group" id="indicatorGroup"></div>
-                <div class="carousel-slide" id="carouselSlide"></div>
-            </section>
+    <article class="address">
+      <p class="body-bold">景點地址：</p>
+      <p class="content-reg" id="address"></p>
+    </article>
 
-            <section class="attraction-booking">
-                <h3 class="header3-bold title" id="name"></h3>
-                <p class="body-reg info"><span id="category"></span><span id="mrt"></span></p>
-                
-                <article class="booking-area">
-                    <p class="body-bold">訂購導覽行程</p>
-                    <p class="content-reg">以此景點為中心的一日行程，帶您探索城市角落故事</p>
-
-                    <form action="/booking" class="booking-form">
-                        <div class="date-selection form-control">
-                            <label for="bookingDate" class="body-bold">選擇日期：</label>
-                            <input type="date" name="date" id="bookingDate" min=2021-05-03>
-                            <small>Error Message</small>
-                        </div>
-                        <div class="time-selection" id="timeSelect">
-                            <span class="body-bold">選擇時間：</span>
-                            <input type="radio" id="morning" name="time" value="morning" checked>
-                            <label for="morning" class="body-reg label-morning" class="morning-label">上半天</label>
-                            <input type="radio" id="afternoon" name="time" value="afternoon">
-                            <label for="afternoon" class="body-reg">下半天</label>
-                        </div>
-                        <p><span class="body-bold price-title">導覽費用：</span><span class="body-reg" id="price">新台幣 2000 元</span></p>
-                        <button class="button-reg" id="bookingBtn">開始預訂行程</button>
-                    </form>
-                </article>
-            </section>
-        </div>
-
-        <div class="division-line"></div>
-
-        <div class="bottom-container">
-
-            <article class="content-reg description" id="description"></article>
-
-            <article class="address">
-                <p class="body-bold">景點地址：</p>
-                <p class="content-reg" id="address"></p>
-            </article>
-            
-            <article class="transportation">
-                <p class="body-bold">交通方式：</p>
-                <p class="content-reg" id="transport"></p>
-            </article>
-
-        </div>
-    </div>
-{% endblock %}
-
-
-{% block script %}
-    <script src="{{url_for('static',filename='js/renderAttraction.js')}}"></script>
-    <script src="{{url_for('static',filename='js/bookAttraction.js')}}"></script>
+    <article class="transportation">
+      <p class="body-bold">交通方式：</p>
+      <p class="content-reg" id="transport"></p>
+    </article>
+    <div id="mapid"></div>
+  </div>
+</div>
+{% endblock %} {% block script %}
+<script src="{{url_for('static',filename='js/renderAttraction.js')}}"></script>
+<script src="{{url_for('static',filename='js/bookAttraction.js')}}"></script>
 {% endblock %}
