@@ -23,7 +23,7 @@ def dataForOrder():
     # request.get_json()取得post過來的資料
     orderData = request.get_json()
     primeValue = orderData["prime"]
-    attractionId = orderData["order"]["trip"][0]["id"]
+    attractionId = orderData["order"]["trip"][0]["attraction"]["id"]
     orderPrice = orderData["order"]["price"]
     orderDate = orderData["order"]["date"]
     orderTime = orderData["order"]["time"]
