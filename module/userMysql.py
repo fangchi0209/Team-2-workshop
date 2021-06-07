@@ -16,14 +16,14 @@ def checkSignUp(email, password, name):
     elif "error" in result:
         return result
     else:
-        return {"error":"true", "message":"Email重複註冊！"}
+        return {"error":True, "message":"Email重複註冊！"}
 
 def checkSignIn(email, password):
     inputQuery = "SELECT user_id FROM user WHERE email = %s AND password = %s"
     inputValue = (email, password)
     result = sqlSelect(inputQuery, inputValue)
     if result == None:
-        return {"error":"ture", "message":"電子郵件或密碼錯誤！"}
+        return {"error":True, "message":"電子郵件或密碼錯誤！"}
     elif "error" in result:
         return result
     else:
@@ -42,7 +42,7 @@ def searchExpire(cookieId):
     if result:
         return result
     else:
-        return {"error":"true", "message":"身分驗證錯誤！"}
+        return {"error":True, "message":"身分驗證錯誤！"}
 
 def changeExpire(cookieId):
     changeQuery = "UPDATE user SET session_expiretime = %s WHERE sessionid = %s"
@@ -76,7 +76,7 @@ def sqlSelect(sqlQuery, value):
         connection_object.close()
         return sqlresult
     except:
-        return {"error":"true", "message":"伺服器內部錯誤！"}
+        return {"error":True, "message":"伺服器內部錯誤！"}
 
 def signUp(sqlQuery, value):
     try:
@@ -85,9 +85,9 @@ def signUp(sqlQuery, value):
             cursor.execute(sqlQuery, value)
             connection_object.commit()
         connection_object.close()
-        return {"ok":"true"}
+        return {"ok":True}
     except:
-        return {"error":"true", "message":"伺服器內部錯誤！"}
+        return {"error":True, "message":"伺服器內部錯誤！"}
 
 def cookieExtend(cookieId):
     newexpireTime = time.time() + cookieLiveTime
@@ -103,7 +103,7 @@ def updateCookie(sqlQuery, value):
             cursor.execute(sqlQuery, value)
             connection_object.commit()
         connection_object.close()
-        return {"ok":"true"}
+        return {"ok":True}
     except:
         return {"error":True, "message":"伺服器內部錯誤！"}
     
