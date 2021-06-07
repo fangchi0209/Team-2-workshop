@@ -37,11 +37,11 @@ class userApi(Resource):
         checkResult = checkSignUp(email, password, name)
         if "error" in checkResult:
             if checkResult["message"] == "伺服器內部錯誤！":
-                return checkResult, 500
+                return jsonify(checkResult), 500
             else:
-                return checkResult, 400
+                return jsonify(checkResult), 400
         else:
-            return checkResult, 200
+            return jsonify(checkResult), 200
 
     def patch(self):
         #request.get_json()取得patch過來的資料
@@ -56,9 +56,9 @@ class userApi(Resource):
         checkResult = checkSignIn(email, password)
         if "error" in checkResult:
             if checkResult["message"] == "伺服器內部錯誤！":
-                return checkResult, 500
+                return jsonify(checkResult), 500
             else:
-                return checkResult, 400
+                return jsonify(checkResult), 400
         #電子郵件及密碼符合的話，回復資料[0]為{"ok":"true"} [1]為cookievalue [2]為保存期限
         else:
             resp = make_response(jsonify(checkResult[0]), 200)
@@ -68,6 +68,6 @@ class userApi(Resource):
     def delete(self):
         cookieValue=request.cookies.get("sessionId")
         result = changeExpire(cookieValue)
-        resp = make_response(result[0], 200)
+        resp = make_response(jsonify(result[0]), 200)
         resp.set_cookie(key="sessionId", value=cookieValue, expires=result[1])
         return resp
