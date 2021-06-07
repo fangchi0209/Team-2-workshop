@@ -1,11 +1,13 @@
 import json
 from mysql.connector import connect
-from getpass import getpass
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 userdb=connect(
     host="localhost",
-    user=input("Enter username: "),
-    password=getpass("Enter password: "),
+    user=os.getenv("db_user"),
+    password=os.getenv("db_password"),
     database="stage2"
 )
 
