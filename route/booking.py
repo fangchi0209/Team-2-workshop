@@ -10,14 +10,16 @@ class bookingApi(Resource):
         # 檢查使用者是否有cookie，正常回復(True, 使用者相關資料, 查詢當下再延長的expendTime)
         checkResult = checkUserStatus(cookieValue)
         if checkResult == False:
-            return jsonify({"error":True, "message":"未登入系統，拒絕存取"}), 403
+            resp = make_response(jsonify({"error":True, "message":"未登入系統，拒絕存取"}), 403)
+            return resp
         # searchResult(user_id, name, email)
         searchResult = checkResult[1]
         expendTime = checkResult[2]
         # 由資料庫中取出所需資料
         getAttractionDataResult = getAttractionData(searchResult[0])
         if "error" in getAttractionDataResult:
-            return getAttractionDataResult, 500
+            resp = make_response(getAttractionDataResult, 500)
+            return resp
         else:
             resp = make_response(getAttractionDataResult, 200)
             resp.set_cookie(key="sessionId", value=cookieValue, expires=expendTime)
