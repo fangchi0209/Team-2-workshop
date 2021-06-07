@@ -105,5 +105,5 @@ def updateCookie(sqlQuery, value):
         connection_object.close()
         return {"ok":"true"}
     except:
-        return {"error":"true", "message":"伺服器內部錯誤！"}
+        return {"error":True, "message":"伺服器內部錯誤！"}
     

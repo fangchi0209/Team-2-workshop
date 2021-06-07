@@ -61,7 +61,7 @@ class userApi(Resource):
                 return checkResult, 400
         #電子郵件及密碼符合的話，回復資料[0]為{"ok":"true"} [1]為cookievalue [2]為保存期限
         else:
-            resp = make_response(checkResult[0], 200)
+            resp = make_response(jsonify(checkResult[0]), 200)
             resp.set_cookie(key="sessionId", value=checkResult[1], expires=checkResult[2], samesite="Strict")
             return resp
 
