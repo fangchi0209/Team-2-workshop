@@ -9,7 +9,8 @@ class userApi(Resource):
         # 正常回復(True, searchResult, expendTime)
         checkResult = checkUserStatus(cookieValue)
         if checkResult == False:
-            return jsonify({"data":None}), 200
+            resp = make_response(jsonify({"data":None}), 200)
+            return resp
         else:
             searchResult = checkResult[1]
             expendTime = checkResult[2]
