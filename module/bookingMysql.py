@@ -46,7 +46,7 @@ def getAttractionData(userId):
         data["date"] = dateString
         data["time"] = result[5]
         data["price"] = result[6]
-        return {"data":data}
+        return {"data":[data]}
 
 def deletePreData(userId):
     deleteQuery = "DELETE FROM booking WHERE user_id = %s"

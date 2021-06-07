@@ -37,4 +37,4 @@ api.add_resource(userApi, "/api/user")
 api.add_resource(bookingApi, "/api/booking")
 
 if __name__ == "__main__":
-	app.run(host="0.0.0.0", port=3000)
+	app.run(host="0.0.0.0", port=5000)
