@@ -15,7 +15,7 @@ const models = {
     return userData;
   },
   getOrderData: async function () {
-    const orderData = await this.fetchData(`/api/orders/${this.orderNum}`);
+    const orderData = await this.fetchData(`/api/order/${this.orderNum}`);
     return orderData;
   },
 };
