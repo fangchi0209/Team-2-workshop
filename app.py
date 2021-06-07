@@ -6,7 +6,7 @@ from route.user import userApi
 from route.booking import bookingApi
 from route.order import ordersApi, orderApi
 
-app = Flask(__name__, static_folder="public", static_url_path="/")
+app = Flask(__name__)
 api = Api(app)
 
 CORS(app)									#設定所有的domains and routes接受跨來源資源共用(CORS)
