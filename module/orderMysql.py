@@ -70,8 +70,6 @@ def getOrderData(orderNumber):
         images = json.loads(result[10])
         data = {
             "number":orderNumber,
-            "date":dateString,
-            "time":result[1],
             "price":result[2],
             "contact":{
                 "name":result[3],
@@ -79,14 +77,16 @@ def getOrderData(orderNumber):
                 "phone":result[5]
             },
             "status":int(result[6]),
-            "trip":{
+            "trip":[{
                 "attraction":{
                     "id":result[7],
                     "name":result[8],
                     "address":result[9],
                     "image":images[0]
-                }
-            }
+                },
+                "date":dateString,
+                "time":result[1]
+            }]            
         }
         return {"data":data}
 
