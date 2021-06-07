@@ -1,4 +1,4 @@
-from flask import request, make_response, Blueprint
+from flask import request, make_response, Blueprint, jsonify
 from module.bookingMysql import deletePreData
 from module.userMysql import checkUserStatus
 from module.orderMysql import submitorderingData, submitpaymentData, submitresponseData, updateStatus, getOrderData
@@ -33,7 +33,7 @@ def dataForOrder():
     # 檢查使用者提供資料正確性
     checkDataResult = checkOrderData(primeValue, attractionId, orderPrice, orderDate, orderTime, name, email, phone)
     if checkDataResult == False:
-        return {"error":"true", "message":"建立失敗，輸入資料錯誤"}, 400
+        return jsonify({"error":True, "message":"建立失敗，輸入資料錯誤"}), 400
     # 建立訂單編號和資料，付款狀態為未付款(payment_status=1)
     insertResult = submitorderingData(userId, attractionId, orderDate, orderTime, orderPrice, name, email, phone, payment_status=1)
     if "error" in insertResult:
@@ -115,7 +115,7 @@ def dataOrderNumber(orderNumber):
     checkResult = checkUserStatus(cookieValue)
     expendTime = checkResult[2]
     if checkResult == False:
-        return {"error":"true", "message":"未登入系統，拒絕存取"}, 403
+        return jsonify({"error":True, "message":"未登入系統，拒絕存取"}), 403
     # 取得該訂單資料
     result = getOrderData(orderNumber)
     if "error" in result:

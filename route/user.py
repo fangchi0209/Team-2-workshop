@@ -9,7 +9,7 @@ class userApi(Resource):
         # 正常回復(True, searchResult, expendTime)
         checkResult = checkUserStatus(cookieValue)
         if checkResult == False:
-            return {"data":"null"}, 200
+            return jsonify({"data":None}), 200
         else:
             searchResult = checkResult[1]
             expendTime = checkResult[2]
@@ -30,10 +30,10 @@ class userApi(Resource):
         email = signUpData["email"]
         password = signUpData["password"]
         if checkData(email, password, name) == False:
-            return {
-                "error": "true",
+            return jsonify({
+                "error": True,
                 "message": "請檢查輸入資料內容且不得為空白！"
-            }, 400
+            }), 400
         checkResult = checkSignUp(email, password, name)
         if "error" in checkResult:
             if checkResult["message"] == "伺服器內部錯誤！":
@@ -49,10 +49,10 @@ class userApi(Resource):
         email = signInData["email"]
         password = signInData["password"]
         if checkData(email, password) == False:
-            return {
-                "error": "true",
+            return jsonify({
+                "error": True,
                 "message": "請檢查輸入資料內容且不得為空白！"
-            }, 400
+            }), 400
         checkResult = checkSignIn(email, password)
         if "error" in checkResult:
             if checkResult["message"] == "伺服器內部錯誤！":
