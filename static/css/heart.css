@@ -6,15 +6,15 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  z-index: 10;
+  z-index: 2;
   padding: 10px;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.5);
   transition: background-color 0.2s;
 }
 
-#favorite {
-  stroke: var(--error);
+.favorite {
+  stroke: var(--heart);
   stroke-opacity: 0.4;
   stroke-width: 2;
   fill: none;
@@ -22,22 +22,23 @@
 }
 
 .heart:hover {
+  cursor: pointer;
   background-color: rgba(218, 218, 218, 0.5);
 }
 
-.heart:hover #favorite {
-  stroke-opacity: 0.85;
-  fill: var(--error);
-  fill-opacity: 0.85;
+.heart:hover .favorite {
+  stroke-opacity: 0.7;
+  fill: var(--heart);
+  fill-opacity: 0.7;
 }
 
 .heart:active {
   background-color: rgba(255, 255, 255, 0.7);
 }
 
-.heart:active #favorite {
+.heart:active .favorite {
   stroke-opacity: 1;
-  fill: var(--error);
+  fill: var(--heart);
   fill-opacity: 1;
 }
 
@@ -45,8 +46,37 @@
   background-color: rgba(255, 255, 255, 0.7);
 }
 
-.heart.selected #favorite {
+.heart.selected .favorite {
   stroke-opacity: 1;
-  fill: var(--error);
+  fill: var(--heart);
   fill-opacity: 1;
+}
+
+.heart.pending {
+  background-color: rgba(218, 218, 218, 0.5);
+}
+
+.heart.pending .favorite {
+  display: none;
+}
+
+.heart .heart-loader {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  opacity: 0.6;
+  border: 6px solid #f8f8f8;
+  border-top: 6px solid var(--heart);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.heart.pending .heart-loader {
+  display: block;
 }

@@ -24,7 +24,43 @@ async function getAttractionsData(pageNum, keyword = null) {
   return nextPage;
 }
 
-//
+// check if logged in (if not, favorite feature cannot be used)
+async function checkLogInBeforeFavarite() {
+  try {
+    const response = await fetch(`${window.origin}/api/user`);
+    const data = await response.json();
+    if (!data.data) {
+      document.getElementById("logIn").classList.add("slide-in");
+      document.getElementById("logIn").classList.add("show");
+      console.log("please log in");
+      return false;
+    } else {
+      console.log("logged in");
+      return true;
+    }
+  } catch {
+    (err) => {
+      console.log(`fetch error : ${err}`);
+    };
+  }
+}
+
+//add to favorite collections
+async function addFavoriteData(attractionId) {
+  try {
+    const res = await fetch("/api/favorite", {
+      method: "POST",
+      headers: new Headers({
+        "Content-Type": "application/json",
+      }),
+      body: JSON.stringify({ attractionId: attractionId }),
+    });
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.log(`fetch error : ${err}`);
+  }
+}
 
 // create single attraction item (called in showAttractions function)
 function createAttractionItem(attraction) {
@@ -32,10 +68,16 @@ function createAttractionItem(attraction) {
   attractionBox.classList.add("attraction-box");
 
   const heart = document.createElement("div");
+  heart.dataset.attractionId = attraction.id;
   heart.classList.add("heart");
   heart.classList.add("loading");
   heart.innerHTML =
-    '<svg viewBox="0 0 24 24" style="pointer-events: none; width: 24px; height: 24px; display: block;"><g id="favorite"><path d="M12,21.4L10.6,20C5.4,15.4,2,12.3,2,8.5C2,5.4,4.4,3,7.5,3c1.7,0,3.4,0.8,4.5,2.1C13.1,3.8,14.8,3,16.5,3C19.6,3,22,5.4,22,8.5c0,3.8-3.4,6.9-8.6,11.5L12,21.4z"></path></g></svg>';
+    '<svg viewBox="0 0 24 24" style="pointer-events: none; width: 24px; height: 24px; display: block;"><g class="favorite"><path d="M12,21.4L10.6,20C5.4,15.4,2,12.3,2,8.5C2,5.4,4.4,3,7.5,3c1.7,0,3.4,0.8,4.5,2.1C13.1,3.8,14.8,3,16.5,3C19.6,3,22,5.4,22,8.5c0,3.8-3.4,6.9-8.6,11.5L12,21.4z"></path></g></svg>';
+
+  const heartPendingLoader = document.createElement("div");
+  heartPendingLoader.classList.add("heart-loader");
+
+  heart.appendChild(heartPendingLoader);
 
   const linkContainer = document.createElement("a");
   linkContainer.href = `/attraction/${attraction.id}`;
@@ -88,6 +130,22 @@ function createAttractionItem(attraction) {
     attractionImage.classList.remove("loading");
     heart.classList.remove("loading");
   });
+
+  async function toggleFavorite() {
+    const logInStatus = await checkLogInBeforeFavarite();
+    if (!logInStatus) {
+      console.log("not logging in!");
+      return;
+    }
+    heart.classList.add("pending");
+    if (!heart.classList.contains("selected")) {
+      const attractionId = parseInt(heart.dataset.attractionId);
+      console.log("add attractions!");
+    } else {
+    }
+  }
+
+  heart.addEventListener("click", toggleFavorite);
 
   return attractionBox;
 }
