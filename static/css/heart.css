@@ -1,0 +1,52 @@
+.heart.loading {
+  display: none;
+}
+
+.heart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: background-color 0.2s;
+}
+
+#favorite {
+  stroke: var(--error);
+  stroke-opacity: 0.4;
+  stroke-width: 2;
+  fill: none;
+  transition: fill 0.2s, stroke-opacity 0.2s;
+}
+
+.heart:hover {
+  background-color: rgba(218, 218, 218, 0.5);
+}
+
+.heart:hover #favorite {
+  stroke-opacity: 0.85;
+  fill: var(--error);
+  fill-opacity: 0.85;
+}
+
+.heart:active {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.heart:active #favorite {
+  stroke-opacity: 1;
+  fill: var(--error);
+  fill-opacity: 1;
+}
+
+.heart.selected {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.heart.selected #favorite {
+  stroke-opacity: 1;
+  fill: var(--error);
+  fill-opacity: 1;
+}
