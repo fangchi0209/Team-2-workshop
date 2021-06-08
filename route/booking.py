@@ -19,10 +19,10 @@ def userBookingData():
     # 由資料庫中取出所需資料
     getAttractionDataResult = getAttractionData(searchResult[0])
     if "error" in getAttractionDataResult:
-        resp = make_response(getAttractionDataResult, 500)
+        resp = make_response(jsonify(getAttractionDataResult), 500)
         return resp
     else:
-        resp = make_response(getAttractionDataResult, 200)
+        resp = make_response(jsonify(getAttractionDataResult), 200)
         resp.set_cookie(key="sessionId", value=cookieValue, expires=expendTime)
         return resp
 
@@ -46,13 +46,13 @@ def userSubmitData():
     # 檢查使用者提供資料正確性
     checkBookingDataResult = checkBookingData(attractionId, bookingDate, bookingTime, bookingPrice)
     if checkBookingDataResult == False:
-        return jsonify({"error":True, "message":"建立失敗，輸入資料錯誤"}), 400
+        return make_response(jsonify({"error":True, "message":"建立失敗，輸入資料錯誤"}), 400)
     # 將訂單資料送進資料庫
     submitResult = submitBookingData(searchResult[0], attractionId, bookingDate, bookingTime, bookingPrice)
     if "error" in submitResult:
-        return submitResult, 500
+        return make_response(jsonify(submitResult), 500)
     else:
-        resp = make_response(submitResult, 200)
+        resp = make_response(jsonify(submitResult), 200)
         resp.set_cookie(key="sessionId", value=cookieValue, expires=expendTime)
         return resp
 
@@ -62,14 +62,14 @@ def userDeleteData():
     # 檢查使用者是否有cookie，正常回復(True, 使用者相關資料, 查詢當下再延長的expendTime)
     checkResult = checkUserStatus(cookieValue)
     if checkResult == False:
-        return jsonify({"error":True, "message":"未登入系統，拒絕存取"}), 403
+        return make_response(jsonify({"error":True, "message":"未登入系統，拒絕存取"}), 403)
     # searchResult(user_id, name, email)
     searchResult = checkResult[1]
     expendTime = checkResult[2]
     # 刪除資料庫中預定行程資料
     deleteBookingDataResult = deletePreData(searchResult[0])
     if "error" in deleteBookingDataResult:
-        return deleteBookingDataResult, 500
+        return make_response(jsonify(deleteBookingDataResult), 500)
     else:
         resp = make_response(deleteBookingDataResult, 200)
         resp.set_cookie(key="sessionId", value=cookieValue, expires=expendTime)
