@@ -37,9 +37,9 @@ app.register_blueprint(attractionsApi, url_prefix="/api")
 app.register_blueprint(attractionApi, url_prefix="/api")
 app.register_blueprint(ordersApi, url_prefix="/api")
 app.register_blueprint(orderApi, url_prefix="/api")
+app.register_blueprint(favoriteApi, url_prefix="/api")
 api.add_resource(userApi, "/api/user")
 api.add_resource(bookingApi, "/api/booking")
-api.add_resource(favoriteApi, "/api/favorite")
 
 if __name__ == "__main__":
 	app.run(host="0.0.0.0", port=5000)
