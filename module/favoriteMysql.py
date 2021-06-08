@@ -2,10 +2,17 @@ from module.connectMysql import connection_pool
 import json
 
 def submitFavorite(userId, attractionId):
-    insertQuery = "INSERT INTO favorite (user_id, attraction_id) VALUES (%s, %s)"
-    insertValue = (userId, attractionId)
-    # 輸入成功回傳{"ok":True} 失敗{"error":True, "message":"伺服器內部錯誤！"}
-    return insertData(insertQuery, insertValue)
+    # 先看有沒有重複收藏
+    selectQuery = "SELECT favorite_id FROM favorite WHERE user_id = %s AND attraction_id = %s"
+    selectValue = (userId, attractionId)
+    result = sqlSelect(selectQuery, selectValue)
+    if len(result) == 0:
+        insertQuery = "INSERT INTO favorite (user_id, attraction_id) VALUES (%s, %s)"
+        insertValue = (userId, attractionId)
+        # 輸入成功回傳{"ok":True} 失敗{"error":True, "message":"伺服器內部錯誤！"}
+        return insertData(insertQuery, insertValue)
+    else:
+        return {"error":True, "message":"景點重複收藏"}
 
 def getFavoriteData(userId):
     selectQuery = "SELECT s.attraction_id, s.name, s.category, s.description, s.address, s.transport, s.mrt, s.latitude, s.longitude, s.images FROM favorite f INNER JOIN spot s ON f.attraction_id = s.attraction_id WHERE user_id = %s"

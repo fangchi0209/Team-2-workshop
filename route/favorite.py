@@ -48,8 +48,12 @@ def submitUserFavorite():
     submitResult = submitFavorite(userData[0], attractionId)
     respBody = jsonify(submitResult)
     if "error" in submitResult:
-        resp = make_response(respBody, 500)
-        return resp
+        if submitResult["message"] == "伺服器內部錯誤！":
+            resp = make_response(respBody, 500)
+            return resp
+        else:
+            resp = make_response(respBody, 403)
+            return resp
     else:
         resp = make_response(respBody, 200)
         resp.set_cookie(key="sessionId", value=cookieValue, expires=expendTime)
