@@ -5,6 +5,7 @@ from route.attractionApi import attractionsApi, attractionApi
 from route.user import userApi
 from route.booking import bookingApi
 from route.order import ordersApi, orderApi
+from route.favorite import favoriteApi
 
 app = Flask(__name__)
 api = Api(app)
@@ -27,6 +28,9 @@ def booking():
 @app.route("/thankyou")
 def thankyou():
 	return render_template("thankyou.html")
+@app.route("/favorite")
+def favorite():
+	return render_template("favorite.html")
 
 #Api
 app.register_blueprint(attractionsApi, url_prefix="/api")
@@ -35,6 +39,7 @@ app.register_blueprint(ordersApi, url_prefix="/api")
 app.register_blueprint(orderApi, url_prefix="/api")
 api.add_resource(userApi, "/api/user")
 api.add_resource(bookingApi, "/api/booking")
+api.add_resource(favoriteApi, "/api/favorite")
 
 if __name__ == "__main__":
 	app.run(host="0.0.0.0", port=5000)

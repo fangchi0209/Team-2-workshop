@@ -16,6 +16,7 @@ def submitBookingData(userId, attractionId, tripDate, tripTime, tripPrice):
         # 回傳伺服器內部錯誤訊息
         return result
     else:
+        # 刪除前次資料後，輸入資料
         deleteResult = deletePreData(userId)
         if "error" in deleteResult:
             # 回傳伺服器內部錯誤訊息            
@@ -50,10 +51,8 @@ def getAttractionData(userId):
 
 def deletePreData(userId):
     deleteQuery = "DELETE FROM booking WHERE user_id = %s"
-    deleteValue = (userId, )
-    # 刪除前次資料後，輸入資料
-    deleteResult = deleteRowData(deleteQuery, deleteValue)
-    return deleteResult
+    deleteValue = (userId, )    
+    return deleteRowData(deleteQuery, deleteValue)    
 
 def sqlSelect(sqlQuery, value):
     try:

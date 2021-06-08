@@ -1,10 +1,9 @@
 from flask import request, make_response, jsonify
 from flask_restful import Resource
 from module.userMysql import checkUserStatus
-from module.checkdata import checkBookingData
-from module.bookingMysql import submitBookingData, getAttractionData, deletePreData
+from module.favoriteMysql import submitFavorite, getFavoriteData, deleteFavoriteData
 
-class bookingApi(Resource):
+class favoriteApi(Resource):
     def get(self):
         cookieValue = request.cookies.get("sessionId")
         # 檢查使用者是否有cookie，正常回復(True, 使用者相關資料, 查詢當下再延長的expendTime)
@@ -13,19 +12,19 @@ class bookingApi(Resource):
             resp = make_response(jsonify(error=True, message="未登入系統，拒絕存取"), 403)
             return resp
         # searchResult(user_id, name, email)
-        searchResult = checkResult[1]
+        userData = checkResult[1]
         expendTime = checkResult[2]
-        # 由資料庫中取出所需資料
-        getAttractionDataResult = getAttractionData(searchResult[0])
-        if "error" in getAttractionDataResult:
-            resp = make_response(getAttractionDataResult, 500)
+        getFavoriteDataResult = getFavoriteData(userData[0])
+        respBody = jsonify(getFavoriteDataResult)
+        if "error" in getFavoriteDataResult:
+            resp = make_response(respBody, 500)
             return resp
         else:
-            resp = make_response(getAttractionDataResult, 200)
+            resp = make_response(respBody, 200)
             resp.set_cookie(key="sessionId", value=cookieValue, expires=expendTime)
             return resp
 
-    def post(self):        
+    def post(self):
         cookieValue = request.cookies.get("sessionId")
         # 檢查使用者是否有cookie，正常回復(True, 使用者相關資料, 查詢當下再延長的expendTime)
         checkResult = checkUserStatus(cookieValue)
@@ -33,41 +32,44 @@ class bookingApi(Resource):
             resp = make_response(jsonify(error=True, message="未登入系統，拒絕存取"), 403)
             return resp
         # searchResult(user_id, name, email)
-        searchResult = checkResult[1]
+        userData = checkResult[1]
         expendTime = checkResult[2]
         # request.get_json()取得post過來的資料
-        bookingData = request.get_json()
-        attractionId = bookingData["attractionId"]
-        bookingDate = bookingData["date"]
-        bookingTime = bookingData["time"]
-        bookingPrice = bookingData["price"]
-        # 檢查使用者提供資料正確性
-        checkBookingDataResult = checkBookingData(attractionId, bookingDate, bookingTime, bookingPrice)
-        if checkBookingDataResult == False:
-            return jsonify({"error":True, "message":"建立失敗，輸入資料錯誤"}), 400
-        # 將訂單資料送進資料庫
-        submitResult = submitBookingData(searchResult[0], attractionId, bookingDate, bookingTime, bookingPrice)
+        attractionId = request.get_json()
+        # 檢查使用者提供資料正確性，景點id是否為整數
+        idCheckResult = isinstance(attractionId, int)
+        if idCheckResult == False:
+            resp = make_response(jsonify(error=True, message="建立失敗，輸入資料錯誤"), 400)
+            return resp
+        # 將收藏景點送進資料庫(送user_id, attraction_id)
+        submitResult = submitFavorite(userData[0], attractionId)
+        respBody = jsonify(submitResult)
         if "error" in submitResult:
-            return submitResult, 500
+            resp = make_response(respBody, 500)
+            return resp
         else:
-            resp = make_response(submitResult, 200)
+            resp = make_response(respBody, 200)
             resp.set_cookie(key="sessionId", value=cookieValue, expires=expendTime)
             return resp
 
-    def delete(self):
+    def delete(self, attractionId):
         cookieValue = request.cookies.get("sessionId")
         # 檢查使用者是否有cookie，正常回復(True, 使用者相關資料, 查詢當下再延長的expendTime)
         checkResult = checkUserStatus(cookieValue)
         if checkResult == False:
-            return jsonify({"error":True, "message":"未登入系統，拒絕存取"}), 403
+            resp = make_response(jsonify(error=True, message="未登入系統，拒絕存取"), 403)
+            return resp
         # searchResult(user_id, name, email)
-        searchResult = checkResult[1]
+        userData = checkResult[1]
         expendTime = checkResult[2]
-        # 刪除資料庫中預定行程資料
-        deleteBookingDataResult = deletePreData(searchResult[0])
-        if "error" in deleteBookingDataResult:
-            return deleteBookingDataResult, 500
+        # 刪除使用者該attractionId景點收藏
+        deleteFavoriteResult = deleteFavoriteData(userData[0], attractionId)
+        respBody = jsonify(deleteFavoriteResult)
+        if "error" in deleteFavoriteResult:
+            resp = make_response(respBody, 500)
+            return resp
         else:
-            resp = make_response(deleteBookingDataResult, 200)
+            resp = make_response(respBody, 200)
             resp.set_cookie(key="sessionId", value=cookieValue, expires=expendTime)
             return resp
+        
