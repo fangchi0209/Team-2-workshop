@@ -1,0 +1,68 @@
+{% extends "base.html"%} {% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/booking.css')}}" />
+{% endblock %} {% block title %}台北一日遊 - 預定行程{% endblock %} {% block main %}
+<div class="main-container hide-before-log-in" id="main">
+  <h2 class="button-bold">您好，<span id="username"></span>，待預訂的行程如下：</h2>
+  <div class="no-booking">
+    <p class="body-reg no-booking-message">目前沒有任何待預訂的行程</p>
+  </div>
+  <div class="has-booking hide">
+    <section class="contact-payment-info">
+      <form action="#" class="booking-form">
+        <article class="contact-info">
+          <h3>您的聯絡資訊</h3>
+          <div class="form-control">
+            <label for="bookingName">聯絡姓名：</label>
+            <input type="text" id="bookingName" placeholder="您的姓名" name="name" class="body-reg" id="bookingName" />
+            <img src="{{url_for('static', filename='images/exclamation-mark.png')}}" alt="" />
+            <small>Error Message</small>
+          </div>
+          <div class="form-control">
+            <label for="bookingEmail">電子信箱：</label>
+            <input type="email" id="bookingEmail" placeholder="您的電子信箱" name="email" class="body-reg" />
+            <img src="{{url_for('static', filename='images/exclamation-mark.png')}}" alt="" />
+            <small>Error Message</small>
+          </div>
+          <div class="form-control">
+            <label for="bookingPhone">手機號碼：</label>
+            <input type="tel" id="bookingPhone" placeholder="您的手機號碼" name="phone" class="body-reg" />
+            <img src="{{url_for('static', filename='images/exclamation-mark.png')}}" alt="" />
+            <small>Error Message</small>
+          </div>
+          <p class="body-bold">請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。</p>
+        </article>
+        <article class="payment-info">
+          <h3>信用卡付款資訊</h3>
+          <div class="form-control">
+            <label for="card-number">卡片號碼：</label>
+            <div class="tpfield" id="card-number"></div>
+            <img src="{{url_for('static', filename='images/icon_success.png')}}" class="success-icon" />
+          </div>
+          <div class="form-control">
+            <label for="card-expiration-date">過期時間：</label>
+            <div class="tpfield" id="card-expiration-date"></div>
+            <img src="{{url_for('static', filename='images/icon_success.png')}}" class="success-icon" />
+          </div>
+          <div class="form-control">
+            <label for="card-ccv">驗證密碼：</label>
+            <div class="tpfield" id="card-ccv"></div>
+            <img src="{{url_for('static', filename='images/icon_success.png')}}" class="success-icon" />
+          </div>
+        </article>
+        <article class="confirm">
+          <p class="body-bold">總價：新台幣 <span id="bookingPrice"></span> 元</p>
+          <button class="body-reg" id="confirmBtn" disabled>確認訂購並付款</button>
+          <div class="error-message">
+            <img class="error-icon" src="{{url_for('static', filename='images/exclamation-mark.png')}}" />
+            <small class="error-message-content">Error Message</small>
+          </div>
+        </article>
+      </form>
+    </section>
+  </div>
+</div>
+{% endblock %} {% block script %}
+<script src="https://js.tappaysdk.com/tpdirect/v5.7.0"></script>
+<script src="{{url_for('static', filename='js/renderBooking.js')}}"></script>
+<script src="{{url_for('static', filename='js/orderTransaction.js')}}"></script>
+{% endblock %}

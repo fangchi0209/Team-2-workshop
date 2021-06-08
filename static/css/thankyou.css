@@ -1,0 +1,243 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  margin: 46px auto 0;
+}
+
+.main-container h2 {
+  margin: 0 0 20px 100px;
+}
+
+.hide-before-log-in {
+  display: none;
+}
+
+.order-num {
+  display: inline-block;
+}
+
+.no-order p {
+  text-align: center;
+}
+
+/***** order attraction info *****/
+
+/* no booking */
+.no-order-data {
+  margin: 35px 0 40px 100px;
+}
+
+.hide {
+  display: none;
+}
+
+/* attractions */
+
+.order-attraction {
+  width: 100%;
+  padding: 0 100px 50px;
+  border-bottom: var(--division-line);
+}
+
+.order-attraction-info {
+  display: flex;
+  flex-direction: row;
+  margin-top: 35px;
+  margin-left: 50px;
+}
+
+.attraction-image-container {
+  height: 180px;
+  width: 240px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.attraction-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.order-detail {
+  margin-left: 45px;
+}
+
+.order-detail h3 {
+  color: var(--teal);
+  margin: 20px 0 30px;
+}
+
+.order-detail p {
+  margin-bottom: 20px;
+}
+
+.order-detail span {
+  margin-left: 5px;
+  line-height: 24px;
+}
+
+.price {
+  text-align: right;
+  margin: 20px 150px 0 0;
+}
+
+/***** contact info *****/
+.contact {
+  margin: 40px 0;
+}
+
+.contact h2 {
+  margin-bottom: 30px;
+}
+
+.contact-info {
+  margin-left: 50px;
+  width: 100%;
+  padding: 0px 110px;
+}
+
+.payment-info {
+  padding-bottom: 25px;
+}
+
+.contact-info h3 {
+  margin: 4px 0 24px;
+}
+
+.contact-info p {
+  margin: 10px 0;
+  line-height: 24px;
+}
+
+.contact .reminder {
+  margin-top: 20px;
+  line-height: 28px;
+}
+
+.back-to-home {
+  text-decoration: none;
+  color: var(--teal);
+  border-bottom: 1px solid transparent;
+  transition: border-bottom 0.2s;
+}
+
+.back-to-home p {
+  letter-spacing: 1px;
+  line-height: 16px;
+  border: 1.5px solid var(--teal);
+  border-radius: 5px;
+  padding: 10px 20px;
+  text-align: center;
+  margin-bottom: 50px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.back-to-home p:hover {
+  cursor: pointer;
+  background-color: var(--teal);
+  color: #fff;
+}
+
+/*************************************/
+/*********** media query *************/
+/*************************************/
+
+@media only screen and (max-width: 860px) {
+  .main-container h2,
+  .remember {
+    margin-left: 10vw;
+  }
+
+  .order-num {
+    display: block;
+  }
+
+  .no-order-message {
+    margin-left: 10vw;
+  }
+
+  .order-attraction {
+    padding: 0 10vw 30px;
+  }
+
+  .order-attraction-info {
+    flex-direction: column;
+  }
+
+  .order-detail {
+    margin: 0;
+  }
+
+  .attraction-image-container {
+    margin-bottom: 30px;
+    max-width: 400px;
+    width: 90%;
+    padding: 0;
+    height: 40vw;
+    max-height: 240px;
+  }
+
+  .order-detail p:last-child {
+    margin-bottom: 0px;
+  }
+
+  .contact-info {
+    margin-left: 0;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .main-container {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .main-container h2,
+  .remember {
+    margin-left: 0;
+  }
+
+  .no-order-message {
+    margin-left: 0;
+  }
+
+  .order-attraction {
+    width: 100%;
+    padding: 0;
+  }
+
+  .order-attraction-info {
+    margin: 30px 0px 50px;
+  }
+
+  .attraction-image-container {
+    width: 100%;
+    height: calc((100vw - 20px) * 0.6);
+    max-width: none;
+    padding: 0;
+  }
+
+  .order-detail {
+    margin-left: 15px;
+  }
+  .order-detail h3 {
+    margin-top: 0px;
+  }
+
+  .contact {
+    margin-left: 15px;
+  }
+
+  .contact-info {
+    margin-left: 0;
+  }
+
+  .contact-info {
+    padding: 0;
+  }
+}
