@@ -11,6 +11,8 @@ def submitFavorite(userId, attractionId):
         insertValue = (userId, attractionId)
         # 輸入成功回傳{"ok":True} 失敗{"error":True, "message":"伺服器內部錯誤！"}
         return insertData(insertQuery, insertValue)
+    elif "error" in result:
+        return result
     else:
         return {"error":True, "message":"景點重複收藏"}
 
