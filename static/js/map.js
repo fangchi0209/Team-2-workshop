@@ -9,7 +9,7 @@ async function attractionsite(attractionId) {
         .then(response => {
             return response.json()
         }).then(res => {
-            console.log(res)
+            // console.log(res)
             latitude = res.data.latitude
             longitude = res.data.longitude
             address = res.data.address
