@@ -24,6 +24,23 @@ async function getAttractionsData(pageNum, keyword = null) {
   return nextPage;
 }
 
+// check log in status
+async function logInStatus() {
+  try {
+    const response = await fetch(`${window.origin}/api/user`);
+    const data = await response.json();
+    if (!data.data) {
+      return false;
+    } else {
+      return true;
+    }
+  } catch {
+    (err) => {
+      console.log(`fetch error : ${err}`);
+    };
+  }
+}
+
 // check if logged in (if not, favorite feature cannot be used)
 async function checkLogInBeforeFavarite() {
   try {
@@ -32,16 +49,27 @@ async function checkLogInBeforeFavarite() {
     if (!data.data) {
       document.getElementById("logIn").classList.add("slide-in");
       document.getElementById("logIn").classList.add("show");
-      console.log("please log in");
       return false;
     } else {
-      console.log("logged in");
       return true;
     }
   } catch {
     (err) => {
       console.log(`fetch error : ${err}`);
     };
+  }
+}
+
+// get favorite collection data
+async function getFavoriteData() {
+  try {
+    const res = await fetch("/api/favorite", {
+      method: "GET",
+    });
+    const data = await res.json();
+    return data.data;
+  } catch (err) {
+    console.log(`fetch error : ${err}`);
   }
 }
 
@@ -62,8 +90,50 @@ async function addFavoriteData(attractionId) {
   }
 }
 
+// remove from favorite collections
+async function removeFavoriteData(attractionId) {
+  try {
+    const res = await fetch(`/api/favorite/${attractionId}`, {
+      method: "DELETE",
+    });
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.log(`fetch error : ${err}`);
+  }
+}
+
+// toggle Favorite (add and remove from favorite);
+async function toggleFavorite(heart) {
+  const logInStatus = await checkLogInBeforeFavarite();
+  if (!logInStatus) {
+    return;
+  }
+  heart.classList.add("pending");
+  const attractionId = parseInt(heart.dataset.attractionId);
+  if (!heart.classList.contains("selected")) {
+    const data = await addFavoriteData(attractionId);
+    if (data.ok) {
+      heart.classList.remove("pending");
+      heart.classList.add("selected");
+    } else if (data.error) {
+      heart.classList.remove("pending");
+      alert(data.message);
+    }
+  } else if (heart.classList.contains("selected")) {
+    const data = await removeFavoriteData(attractionId);
+    if (data.ok) {
+      heart.classList.remove("pending");
+      heart.classList.remove("selected");
+    } else if (data.error) {
+      heart.classList.remove("pending");
+      alert(data.message);
+    }
+  }
+}
+
 // create single attraction item (called in showAttractions function)
-function createAttractionItem(attraction) {
+function createAttractionItem(attraction, favoriteIds) {
   const attractionBox = document.createElement("article");
   attractionBox.classList.add("attraction-box");
 
@@ -125,36 +195,36 @@ function createAttractionItem(attraction) {
   attractionBox.appendChild(linkContainer);
   attractionBox.appendChild(heart);
 
+  if (favoriteIds.includes(attraction.id)) {
+    heart.classList.add("selected");
+  }
+
   attractionImage.addEventListener("load", () => {
     loadingSpinner.hidden = true;
     attractionImage.classList.remove("loading");
     heart.classList.remove("loading");
   });
 
-  async function toggleFavorite() {
-    const logInStatus = await checkLogInBeforeFavarite();
-    if (!logInStatus) {
-      console.log("not logging in!");
-      return;
-    }
-    heart.classList.add("pending");
-    if (!heart.classList.contains("selected")) {
-      const attractionId = parseInt(heart.dataset.attractionId);
-      console.log("add attractions!");
-    } else {
-    }
-  }
-
-  heart.addEventListener("click", toggleFavorite);
+  heart.addEventListener("click", () => toggleFavorite(heart));
 
   return attractionBox;
 }
 
 // show all attractions in the same page (called in loadAttractions function)
-function showAttractions() {
+async function showAttractions() {
   if (attractionsArray.length) {
+    const isLogIn = await logInStatus();
+    const favoriteIds = [];
+    if (isLogIn) {
+      const favorites = await getFavoriteData();
+      if (favorites) {
+        for (let favorite of favorites) {
+          favoriteIds.push(favorite.id);
+        }
+      }
+    }
     for (let attraction of attractionsArray) {
-      const attractionBox = createAttractionItem(attraction);
+      const attractionBox = createAttractionItem(attraction, favoriteIds);
       attractionsContainer.appendChild(attractionBox);
     }
   } else if (!attractionsContainer.firstChild) {
