@@ -1,336 +1,335 @@
 /************* overall layout setting *************/
 
-.whole-container{
-    max-width: 1200px;
-    width:90%;
-    margin: 0 auto;
+.whole-container {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
 }
 
-.top-container{
-    margin:40px 0 0;
-    display:flex;
-    flex-direction: row;
-    padding:0 15px 40px;
+.top-container {
+  margin: 40px 0 0;
+  display: flex;
+  flex-direction: row;
+  padding: 0 15px 40px;
 }
 
-.division-line{
-    width:100%;
-    border-bottom: 1px solid #E8E8E8;
+.division-line {
+  width: 100%;
+  border-bottom: 1px solid #e8e8e8;
 }
 
-.bottom-container{
-    margin:50px 10px 120px;
-    display:flex;
-    flex-direction: column;
+.bottom-container {
+  margin: 50px 10px 120px;
+  display: flex;
+  flex-direction: column;
 }
-
 
 /************* carousel *************/
 
 /* carousel container and images */
-.carousel{
-    width:540px;
-    height:400px;
-    border-radius:5px;
-    position: relative;
-    overflow: hidden;
+.carousel {
+  position: relative;
+  width: 540px;
+  height: 400px;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
 }
 
-.carousel-slide{
-    position:relative;
-    width: 100%;
-    height: 100%;
+.carousel-slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-.carousel-slide img{
-    position: absolute;
-    object-fit: cover;
-    object-position: center center;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width:100%;
-    height: 100%;
-    opacity: 1;
-    transition: opacity 0.3s;
+.carousel-slide img {
+  position: absolute;
+  object-fit: cover;
+  object-position: center center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transition: opacity 0.3s;
 }
 
-.carousel-slide .hide{
-    opacity: 0;
+.carousel-slide .hide {
+  opacity: 0;
 }
 
 /* arrow */
 
-.left, .right{
-    position: absolute;
-    top: 50%;
-    transform:translateY(-50%);
-    width:36px;
-    height: 36px;
-    opacity:0.6;
-    z-index: 1;
-    transition:opacity 0.2s;
+.left,
+.right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  opacity: 0.6;
+  z-index: 1;
+  transition: opacity 0.2s;
 }
 
-.left{
-    left:10px;
+.left {
+  left: 10px;
 }
 
-.right{
-    right:10px;
+.right {
+  right: 10px;
 }
 
-.left:hover, 
-.right:hover{
-    opacity:0.8;
+.left:hover,
+.right:hover {
+  opacity: 0.8;
 }
 
-.left:active, 
-.right:active{
-    opacity:1;
+.left:active,
+.right:active {
+  opacity: 1;
 }
-
 
 /* images indicator */
-.indicator-group{
-    position:absolute;
-    bottom:10px;
-    left: 50%;
-    transform:translateX(-50%);
-    z-index: 1;
+.indicator-group {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
 }
 
-.indicator{
-    width:12px;
-    height: 12px;
-    border-radius:50%;
-    background-color:#fff;
-    border: 1px solid #fff;
-    opacity: 0.7;
-    display: inline-block;
-    transition: background-color 0.3s;
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 1px solid #fff;
+  opacity: 0.7;
+  display: inline-block;
+  transition: background-color 0.3s;
 }
 
-.indicator:first-child ~ div{
-    margin-left:12px;
+.indicator:first-child ~ div {
+  margin-left: 12px;
 }
 
-.indicator.current{
-    background-color:#448899;
+.indicator.current {
+  background-color: #448899;
 }
 
-.form-control.error small{
-    text-align: left;
-    margin: 0 0px 15px 170px;
+.form-control.error small {
+  text-align: left;
+  margin: 0 0px 15px 170px;
 }
 
 /* loader */
 
-.loader{
-    position: absolute;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    margin:auto;
-    border: 6.75px solid #F8F8F8;
-    border-top: 6.75px solid #d7eaf1;
-    width: 67.5px;
-    height:67.5px;
-    border-radius: 50%;
-    animation: spin 2s linear infinite;
+.loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  border: 6.75px solid #f8f8f8;
+  border-top: 6.75px solid #d7eaf1;
+  width: 67.5px;
+  height: 67.5px;
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
 }
 
-@keyframes spin{
-    0% { transform: rotate(0deg);}
-    100% { transform: rotate(360deg);}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
-
-
 
 /************* booking *************/
 
-.attraction-booking{
-    width: 540px;
-    margin-left:30px;
-    display:flex;
-    flex-direction: column;
+.attraction-booking {
+  width: 540px;
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
 }
 
-.booking-area{
-    background-color:#E8E8E8;
-    border-radius:5px;
-    padding: 20px 20px 41px;
+.booking-area {
+  background-color: #e8e8e8;
+  border-radius: 5px;
+  padding: 20px 20px 41px;
 }
 
-.title{
-    margin:5px 0 15px;
+.title {
+  margin: 5px 0 15px;
 }
 
-.info{
-    margin-bottom:20px;
+.info {
+  margin-bottom: 20px;
 }
 
-.booking-area>p{
-    margin-bottom:20px;
+.booking-area > p {
+  margin-bottom: 20px;
 }
 
-.booking-form>div{
-    margin-bottom:20px;
+.booking-form > div {
+  margin-bottom: 20px;
 }
 
 .date-selection label,
 .time-selection span,
-.price-title{
-    margin-right: 5px;
+.price-title {
+  margin-right: 5px;
 }
 
 input:hover,
-.time-selection label:hover{
-    cursor: pointer;
+.time-selection label:hover {
+  cursor: pointer;
 }
 
-
-.label-morning{
-    margin-right:18px;
+.label-morning {
+  margin-right: 18px;
 }
 
-button{
-    vertical-align:middle;
-    color:white;
-    padding:10px 20px;
-    border-radius:5px;
-    background-color:#448899;
-    margin-top:25px;
-    transition: background-color 0.2s;
+button {
+  vertical-align: middle;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #448899;
+  margin-top: 25px;
+  transition: background-color 0.2s;
 }
 
-button:hover{
-    background-color:#337788;
+button:hover {
+  background-color: #337788;
 }
 
-button:active{
-    background-color:#66AABB;
+button:active {
+  background-color: #66aabb;
 }
 
 /* custom input style */
 
-input[type="date"]{
-    padding:5px 10px;
-    width:193px;
-    color: #757575;
-    outline-color:#448899;
+input[type="date"] {
+  padding: 5px 10px;
+  width: 193px;
+  color: #757575;
+  outline-color: #448899;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-    background: url(../images/icon_calendar.png) center/80% no-repeat;
-    /* color: rgba(0, 0, 0, 0); */
-    opacity: 0.6;
-    transition: opacity 0.2s;
+  background: url(../images/icon_calendar.png) center/80% no-repeat;
+  /* color: rgba(0, 0, 0, 0); */
+  opacity: 0.6;
+  transition: opacity 0.2s;
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator:hover{
-    opacity: 1;
-    cursor: pointer;
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+  cursor: pointer;
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator:active{
-    transform: translate(0.5px, 0.5px);
+input[type="date"]::-webkit-calendar-picker-indicator:active {
+  transform: translate(0.5px, 0.5px);
 }
 
-input[type="radio"]{
-    visibility:hidden;
-    position: absolute;
+input[type="radio"] {
+  visibility: hidden;
+  position: absolute;
 }
 
-input[type="radio"] + label{
-    vertical-align:middle;
+input[type="radio"] + label {
+  vertical-align: middle;
 }
 
-input[type=radio] + label:before{
-    box-sizing: border-box;
-    height:20px;
-    width:20px;
-    content: " ";
-    display:inline-block;
-    vertical-align:middle;
-    border:2px solid #fff;
-    background-color:#fff;
-    border-radius:50%;
-    margin-right: 4px;
-    transition: background-color 0.2s;
+input[type="radio"] + label:before {
+  box-sizing: border-box;
+  height: 20px;
+  width: 20px;
+  content: " ";
+  display: inline-block;
+  vertical-align: middle;
+  border: 2px solid #fff;
+  background-color: #fff;
+  border-radius: 50%;
+  margin-right: 4px;
+  transition: background-color 0.2s;
 }
 
-input[type="radio"]:hover + label:before
-{   
-    cursor: pointer;
-    background-color: #44889977;
+input[type="radio"]:hover + label:before {
+  cursor: pointer;
+  background-color: #44889977;
 }
 
-input[type=radio]:checked + label:before{
-    background-color: #448899;
+input[type="radio"]:checked + label:before {
+  background-color: #448899;
 }
 
 /************* more information *************/
 
-.address, .transportation{
-    margin-top:25px;
+.address,
+.transportation {
+  margin-top: 25px;
 }
 
 .address p:first-child,
-.transportation p:first-child{
-    margin-bottom: 10px;
+.transportation p:first-child {
+  margin-bottom: 10px;
 }
-
 
 /***************************************/
 /************* media query *************/
 /***************************************/
-@media only screen and (max-width:600px){
+@media only screen and (max-width: 600px) {
+  .whole-container {
+    width: 100%;
+  }
 
-    .whole-container{
-        width:100%;
-    }
+  .top-container {
+    flex-direction: column;
+    margin: 0;
+    padding: 0 0 40px;
+    width: 100%;
+  }
 
-    .top-container{
-        flex-direction: column;
-        margin:0;
-        padding:0 0 40px;
-        width:100%;
-    }
+  .division-line {
+    width: calc(100% - 20px);
+    margin: 0 auto;
+  }
 
-    .division-line{
-        width:calc(100% - 20px);
-        margin: 0 auto;
-    }
+  .carousel {
+    width: 100%;
+    height: 350px;
+    border-radius: 0;
+  }
 
-    .carousel{
-        width:100%;
-        height: 350px;
-        border-radius:0;
-    }
+  .photo {
+    overflow: hidden;
+    width: auto;
+  }
 
-    .photo{
-        overflow: hidden;
-        width:auto;
-    }
+  .attraction-booking {
+    margin: 25px 0 0;
+    width: 100%;
+    padding: 0 10px;
+  }
 
-    .attraction-booking{
-        margin: 25px 0 0;
-        width: 100%;
-        padding: 0 10px;
-    }
+  .booking-area {
+    width: 100%;
+    background-color: #e8e8e8;
+    border-radius: 5px;
+    padding: 20px;
+  }
 
-    .booking-area{
-        width:100%;
-        background-color:#E8E8E8;
-        border-radius:5px;
-        padding: 20px;
-    }
-
-    .bottom-container{
-        width:100%;
-        padding:0 20px;
-        margin: 50px 0 110px;
-    }
+  .bottom-container {
+    width: 100%;
+    padding: 0 20px;
+    margin: 50px 0 110px;
+  }
 }
