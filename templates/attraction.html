@@ -1,5 +1,6 @@
 {% extends "base.html" %} {% block css %}
 <link rel="stylesheet" href="{{url_for('static', filename='css/attraction.css')}}" />
+<link rel="stylesheet" href="{{url_for('static', filename='css/heart.css')}}" />
 <link
   rel="stylesheet"
   href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
@@ -26,6 +27,15 @@
       <img src="{{url_for('static', filename='images/btn_leftArrow.png')}}" alt="" class="left" id="prevBtn" />
       <img src="{{url_for('static', filename='images/btn_rightArrow.png')}}" alt="" class="right" id="nextBtn" />
       <div class="indicator-group" id="indicatorGroup"></div>
+      <div class="heart">
+        <svg viewBox="0 0 24 24" style="pointer-events: none; width: 30px; height: 30px; display: block">
+          <g class="favorite">
+            <path
+              d="M12,21.4L10.6,20C5.4,15.4,2,12.3,2,8.5C2,5.4,4.4,3,7.5,3c1.7,0,3.4,0.8,4.5,2.1C13.1,3.8,14.8,3,16.5,3C19.6,3,22,5.4,22,8.5c0,3.8-3.4,6.9-8.6,11.5L12,21.4z"
+            ></path>
+          </g>
+        </svg>
+      </div>
       <div class="carousel-slide" id="carouselSlide"></div>
     </section>
 
@@ -40,7 +50,7 @@
         <form action="/booking" class="booking-form">
           <div class="date-selection form-control">
             <label for="bookingDate" class="body-bold">選擇日期：</label>
-            <input type="date" name="date" id="bookingDate" min="2021-05-03" />
+            <input type="date" name="date" id="bookingDate" />
             <small>Error Message</small>
           </div>
           <div class="time-selection" id="timeSelect">
@@ -78,6 +88,7 @@
 </div>
 {% endblock %} {% block script %}
 
+<script src="{{url_for('static',filename='js/favorite.js')}}"></script>
 <script src="{{url_for('static',filename='js/renderAttraction.js')}}"></script>
 <script src="{{url_for('static',filename='js/bookAttraction.js')}}"></script>
 <script src="{{url_for('static',filename='js/map.js')}}"></script>
