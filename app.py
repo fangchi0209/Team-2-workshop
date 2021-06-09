@@ -1,13 +1,12 @@
 from flask import Flask, render_template
 from flask_cors import CORS
-from flask_restful import Api
 from route.attractionApi import attractionsApi, attractionApi
 from route.user import userApi
 from route.booking import bookingApi
 from route.order import ordersApi, orderApi
+from route.favorite import favoriteApi
 
 app = Flask(__name__)
-api = Api(app)
 
 CORS(app)									#設定所有的domains and routes接受跨來源資源共用(CORS)
 app.config["JSON_AS_ASCII"]=False			#False避免中文顯示為ASCII編碼
@@ -27,14 +26,18 @@ def booking():
 @app.route("/thankyou")
 def thankyou():
 	return render_template("thankyou.html")
+@app.route("/favorite")
+def favorite():
+	return render_template("favorite.html")
 
 #Api
 app.register_blueprint(attractionsApi, url_prefix="/api")
 app.register_blueprint(attractionApi, url_prefix="/api")
 app.register_blueprint(ordersApi, url_prefix="/api")
 app.register_blueprint(orderApi, url_prefix="/api")
-api.add_resource(userApi, "/api/user")
-api.add_resource(bookingApi, "/api/booking")
+app.register_blueprint(favoriteApi, url_prefix="/api")
+app.register_blueprint(userApi, url_prefix="/api")
+app.register_blueprint(bookingApi, url_prefix="/api")
 
 if __name__ == "__main__":
-	app.run(host="0.0.0.0", port=5000)
+	app.run(host="0.0.0.0", port=5000, debug=True)
