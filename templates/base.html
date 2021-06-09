@@ -17,7 +17,7 @@
           <h1><a href="/">台北一日遊</a></h1>
           <nav class="header-navbar">
             <ul>
-              <li id="favoriteLink"></li>
+              <li id="favoriteLink">景點收藏</li>
               <li id="bookingLink">預定行程</li>
               <li class="hide" id="logInSignUp">登入/註冊</li>
               <li class="hide" id="logOut" hidden>登出系統</li>
@@ -172,6 +172,7 @@
     <script src="{{url_for('static', filename='js/isLogIn.js')}}"></script>
     <script src="{{url_for('static', filename='js/logInSignUp.js')}}"></script>
     <script src="{{url_for('static', filename='js/navbarBooking.js')}}"></script>
+    <script src="{{url_for('static', filename='js/navbarFavorite.js')}}"></script>
     {% block script %}{% endblock %}
   </body>
 </html>

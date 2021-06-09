@@ -1,6 +1,12 @@
 {% extends "base.html"%} {% block css %}
 <link rel="stylesheet" href="{{url_for('static', filename='css/booking.css')}}" />
 {% endblock %} {% block title %}台北一日遊 - 預定行程{% endblock %} {% block main %}
+<section class="hero-bg">
+  <div class="hero-container">
+    <h2>預定行程</h2>
+    <p>開始探索台北，展開一場體驗城市的深度旅遊</p>
+  </div>
+</section>
 <div class="main-container hide-before-log-in" id="main">
   <h2 class="button-bold">您好，<span id="username"></span>，待預訂的行程如下：</h2>
   <div class="no-booking">
