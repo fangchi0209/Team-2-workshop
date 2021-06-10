@@ -25,7 +25,18 @@
   </tr>
   <tr>
     <td>開 API (/api/favorite)<br>
-      attraction.html 裡新增 map.js<br></td>
+      attraction.html 裡新增 map.js<br>
+      deploy on EC2<br></td>
+    <td>新增 app.route("/favorite")<br>
+       post / get / delete methods<br>
+       favorite table in MySQL<br>
+       新增檢查是否重複收藏<br>
+       撰寫前後端工作流程</td>
+    <td>首頁加愛心<br>
+      attraction page 加愛心<br>
+      favorite page (html)<br>
+      nav bar include favorite page<br>
+      attraction.html 裡新增 愛心.js</td>
 </table>
 
 
