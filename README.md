@@ -50,6 +50,8 @@ https://www.taipeitoursite.com/cowork
 
 5. deploy 到 H 的 EC2 上	
 
+![GITHUB](https://github.com/fangchi0209/Team-2-workshop/blob/main/前後端整合與部屬.jpg)
+
 
 #### 工作細部流程
 
@@ -64,6 +66,9 @@ https://www.taipeitoursite.com/cowork
 4.
  - 由 B 負責我的收藏後端 db 建置與 api 建置
  - 由 F1 負責我的收藏前端串接 api 與 UI 圖示製作
+
+
+![GITHUB](https://github.com/fangchi0209/Team-2-workshop/blob/main/協作流程圖.jpg)
 
 
 #### [ 網頁前後端動作 ]
