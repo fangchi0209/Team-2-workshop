@@ -113,7 +113,7 @@ TPDirect.card.getTappayFieldsStatus();
 // get Total Price
 async function getTotalPrice() {
   try {
-    const res = await fetch(`${window.origin}/api/booking`);
+    const res = await fetch(`${window.origin}/cowork/api/booking`);
     const data = await res.json();
     const allBookings = data.data;
     let totalPrice = 0;
@@ -132,7 +132,7 @@ async function getTotalPrice() {
 
 async function getBookingTrips() {
   try {
-    const res = await fetch(`${window.origin}/api/booking`);
+    const res = await fetch(`${window.origin}/cowork/api/booking`);
     const data = await res.json();
     const allBookings = data.data;
     const allTrips = [];
@@ -173,7 +173,7 @@ async function buildRequestBody(prime) {
 
 // send data to server
 async function sendTransactionData(requestData) {
-  const res = await fetch(`${window.origin}/api/orders`, {
+  const res = await fetch(`${window.origin}/cowork/api/orders`, {
     method: "POST",
     headers: new Headers({
       "Content-Type": "application/json",

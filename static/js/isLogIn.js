@@ -1,7 +1,7 @@
 // ================================================
 // ============ Check if Logged In ================
 // ================================================
-fetch(`${window.origin}/api/user`)
+fetch(`${window.origin}/cowork/api/user`)
   .then((res) => res.json())
   .then((data) => {
     if (data.data) {

@@ -1,7 +1,7 @@
 const models = {
   getUserLogInInfo: async function () {
     try {
-      const res = await fetch(`${window.origin}/api/user`);
+      const res = await fetch(`${window.origin}/cowork/api/user`);
       const logIndata = await res.json();
       return logIndata;
     } catch (err) {
@@ -10,7 +10,7 @@ const models = {
   },
   getBookingData: async function () {
     try {
-      const res = await fetch(`${window.origin}/api/booking`);
+      const res = await fetch(`${window.origin}/cowork/api/booking`);
       const data = await res.json();
       const bookingData = data.data;
       return bookingData;
@@ -20,7 +20,7 @@ const models = {
   },
   getUserInfo: async function () {
     try {
-      const res = await fetch("/api/user");
+      const res = await fetch("/cowork/api/user");
       const data = await res.json();
       const userData = data.data;
       return userData;
@@ -30,7 +30,7 @@ const models = {
   },
   removeBookingData: async function (requestBody) {
     try {
-      const res = await fetch("/api/booking", {
+      const res = await fetch("/cowork/api/booking", {
         method: "DELETE",
         headers: new Headers({
           "Content-Type": "application/json",

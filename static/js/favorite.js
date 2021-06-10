@@ -1,7 +1,7 @@
 // check log in status
 async function logInStatus() {
   try {
-    const response = await fetch(`${window.origin}/api/user`);
+    const response = await fetch(`${window.origin}/cowork/api/user`);
     const data = await response.json();
     if (!data.data) {
       return false;
@@ -18,7 +18,7 @@ async function logInStatus() {
 // check if logged in (if not, favorite feature cannot be used)
 async function checkLogInBeforeFavarite() {
   try {
-    const response = await fetch(`${window.origin}/api/user`);
+    const response = await fetch(`${window.origin}/cowork/api/user`);
     const data = await response.json();
     if (!data.data) {
       document.getElementById("logIn").classList.add("slide-in");
@@ -37,7 +37,7 @@ async function checkLogInBeforeFavarite() {
 // get favorite collection data
 async function getFavoriteData() {
   try {
-    const res = await fetch("/api/favorite", {
+    const res = await fetch("/cowork/api/favorite", {
       method: "GET",
     });
     const data = await res.json();
@@ -50,7 +50,7 @@ async function getFavoriteData() {
 //add to favorite collections
 async function addFavoriteData(attractionId) {
   try {
-    const res = await fetch("/api/favorite", {
+    const res = await fetch("/cowork/api/favorite", {
       method: "POST",
       headers: new Headers({
         "Content-Type": "application/json",
@@ -67,7 +67,7 @@ async function addFavoriteData(attractionId) {
 // remove from favorite collections
 async function removeFavoriteData(attractionId) {
   try {
-    const res = await fetch(`/api/favorite/${attractionId}`, {
+    const res = await fetch(`/cowork/api/favorite/${attractionId}`, {
       method: "DELETE",
     });
     const data = await res.json();
