@@ -5,7 +5,7 @@ from route.booking import bookingApi
 from route.order import ordersApi, orderApi
 from route.favorite import favoriteApi
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path="/cowork")
 
 app.config["JSON_AS_ASCII"]=False			#False避免中文顯示為ASCII編碼
 app.config["TEMPLATES_AUTO_RELOAD"]=True	#True當flask偵測到template有修改會自動更新
