@@ -42,7 +42,7 @@ function createAttractionItem(attraction, favoriteIds) {
   heart.appendChild(heartPendingLoader);
 
   const linkContainer = document.createElement("a");
-  linkContainer.href = `cowork/attraction/${attraction.id}`;
+  linkContainer.href = `${window.origin}/cowork/attraction/${attraction.id}`;
 
   const imageContainer = document.createElement("div");
   imageContainer.classList.add("image-container");
