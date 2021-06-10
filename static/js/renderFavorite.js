@@ -65,14 +65,23 @@ const views = {
     const attractionCategory = this.createElementWithClass("p", "attraction-category");
     attractionCategory.textContent = attraction.category;
 
+    const attractionDescription = this.createElementWithClass("p", "attraction-description");
+    attractionDescription.textContent = `${attraction.description.slice(0, 40)} ...`;
+
+    const bookAttractionBtn = this.createElementWithClass("a", "book-attraction-btn");
+    bookAttractionBtn.textContent = "前往預定此行程";
+    bookAttractionBtn.href = `/attraction/${attraction.id}`;
+
     attractionInfo.appendChild(attractionMrt);
     attractionInfo.appendChild(attractionCategory);
 
     attractionTextContainer.appendChild(attractionTitle);
     attractionTextContainer.appendChild(attractionInfo);
+    attractionTextContainer.appendChild(attractionDescription);
 
     linkContainer.appendChild(imageContainer);
     linkContainer.appendChild(attractionTextContainer);
+    linkContainer.appendChild(bookAttractionBtn);
 
     attractionBox.appendChild(linkContainer);
     attractionBox.appendChild(heart);
