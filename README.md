@@ -4,6 +4,12 @@
 | 李芳岐 (簡稱H, F2)                    | 李震瑋 (簡稱B)                            | 魏伊廷 (簡稱F1)                             |
 |-------------------------------------|------------------------------------------|-------------------------------------------|
 | repo host / deploy / map developer  | back-end code-base provider / developer  | front-end code-base provider / developer  |
+|-------------------------------------|------------------------------------------|-------------------------------------------|
+| 開 API (/api/favorite)<br>          | 新增 app.route("/favorite")<br>           | 首頁加愛心<br>                              |
+| attraction.html 裡新增 map.js<br>    | post / get / delete methods<br>          | attraction page 加愛心<br>                 |
+| deploy on EC2<br>                   | favorite table in MySQL<br>              | favorite page (html)<br>                  |
+| <br>                                | 新增檢查是否重複收藏<br>                    | nav bar include favorite page<br>         |
+| <br>                                | 撰寫前後端工作流程<br>                      | attraction.html 裡新增 愛心.js              |
 
 
 #### 合作主題
@@ -52,6 +58,14 @@
 ##### H+F: attraction.html 裡新增 map.js + 愛心.js
 ##### H: map.js GET 經緯度
 ##### B: 撰寫前後端工作流程
+
+| 李芳岐 (簡稱H, F2)                  | 李震瑋 (簡稱B)                     | 魏伊廷 (簡稱F1)                     |
+|-----------------------------------|-----------------------------------|-----------------------------------|
+| 開 API (/api/favorite)<br>        | 新增 app.route("/favorite")<br>    | 首頁加愛心<br>                      |
+| attraction.html 裡新增 map.js<br>  | post / get / delete methods<br>   | attraction page 加愛心<br>         |
+| deploy on EC2<br>                 | favorite table in MySQL<br>       | favorite page (html)<br>          |
+| <br>                              | 新增檢查是否重複收藏<br>             | nav bar include favorite page<br> |
+| <br>                              | 撰寫前後端工作流程<br>               | attraction.html 裡新增 愛心.js      |
 
 
 #### [ 網頁前後端動作 ]
