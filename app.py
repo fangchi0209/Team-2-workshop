@@ -12,19 +12,19 @@ app.config["TEMPLATES_AUTO_RELOAD"]=True	#True當flask偵測到template有修改
 app.config["JSON_SORT_KEYS"]=False			#False不以物件名稱進行排序顯示
 
 # Pages
-@app.route("/")
+@app.route("/cowork")
 def index():
 	return render_template("index.html")
-@app.route("/attraction/<id>")
+@app.route("/cowork/attraction/<id>")
 def attraction(id):
 	return render_template("attraction.html")
-@app.route("/booking")
+@app.route("/cowork/booking")
 def booking():
 	return render_template("booking.html")
-@app.route("/thankyou")
+@app.route("/cowork/thankyou")
 def thankyou():
 	return render_template("thankyou.html")
-@app.route("/favorite")
+@app.route("/cowork/favorite")
 def favorite():
 	return render_template("favorite.html")
 
