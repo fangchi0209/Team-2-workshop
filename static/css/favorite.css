@@ -58,6 +58,7 @@
   overflow: hidden;
   border: 1px solid #e8e8e8;
   transition: box-shadow 0.2s;
+  padding-bottom: 15px;
 }
 
 .attraction-box:hover {
@@ -111,10 +112,30 @@
   height: 100%;
 }
 
-.attractions-container span {
-  color: #757575;
-  margin: 0 auto;
-  font-size: 18px;
+.attraction-description {
+  line-height: 24px;
+  color: #969696;
+}
+
+.attraction-box .book-attraction-btn {
+  margin: 15px auto 5px;
+  padding: 10px 20px;
+  color: var(--teal);
+  border-radius: 5px;
+  border: 1.5px solid var(--teal);
+  display: block;
+  width: fit-content;
+  transition: all 0.2s;
+}
+
+.attraction-box .book-attraction-btn:hover {
+  background-color: var(--teal-dark);
+  color: white;
+}
+
+.attraction-box .book-attraction-btn:active {
+  background-color: var(--teal-light);
+  color: white;
 }
 
 /* loader */
@@ -144,6 +165,13 @@
 }
 
 /* link when no favorite item */
+
+.attractions-container span {
+  color: #757575;
+  margin: 0 auto;
+  font-size: 18px;
+}
+
 .back-to-index {
   letter-spacing: 0.1rem;
   display: block;
