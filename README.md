@@ -18,14 +18,14 @@
     <td>李震瑋 (簡稱B) </td>
     <td>魏伊廷 (簡稱F1)  </td>
   </tr>
-</table>
-
-<table>
   <tr>
     <td>repo host / deploy / map developer</td>
     <td>back-end code-base provider / developer </td>
     <td>front-end code-base provider / developer </td>
   </tr>
+  <tr>
+    <td>開 API (/api/favorite)<br>
+      attraction.html 裡新增 map.js<br></td>
 </table>
 
 
