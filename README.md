@@ -1,13 +1,9 @@
 # Team-2-workshop
 
 #### Teamwork Distribution
-##### repo host / deploy / map developer : 李芳岐(簡稱H, F2)
-##### back-end code-base provider / developer : 李震瑋(簡稱B)
-##### front-end code-base provider / developer :  魏伊廷(簡稱F1)
-
-| 李芳岐(簡稱H, F2)                    | 李震瑋(簡稱B)                            | 魏伊廷(簡稱F1)                             |
-|------------------------------------|-----------------------------------------|------------------------------------------|
-| repo host / deploy / map developer | back-end code-base provider / developer | front-end code-base provider / developer |
+| 李芳岐 (簡稱H, F2)                    | 李震瑋 (簡稱B)                            | 魏伊廷 (簡稱F1)                             |
+|-------------------------------------|------------------------------------------|-------------------------------------------|
+| repo host / deploy / map developer  | back-end code-base provider / developer  | front-end code-base provider / developer  |
 
 
 #### 合作主題
