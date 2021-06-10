@@ -30,11 +30,11 @@
 
 2. 地圖功能由 F2 用 map.js 分開製作
 
-3a. 由 H 開立我的收藏功能所需的 get / post /delete api 規格與實作流程  https://app.swaggerhub.com/apis-docs/fangchi0209/favoriteAPI/1.0.0#/
-3b. H 與 F1, B 討論調整 api 規格
+3. a. 由 H 開立我的收藏功能所需的 get / post /delete api 規格與實作流程  https://app.swaggerhub.com/apis-docs/fangchi0209/favoriteAPI/1.0.0#/
+3. b. H 與 F1, B 討論調整 api 規格
 
-4a. 由 B 負責我的收藏後端 db 建置與 api 建置
-4b. 由 F1 負責我的收藏前端串接 api 與 UI 圖示製作
+4. a. 由 B 負責我的收藏後端 db 建置與 api 建置
+4. b. 由 F1 負責我的收藏前端串接 api 與 UI 圖示製作
 
 
 #### [ To do list ]
