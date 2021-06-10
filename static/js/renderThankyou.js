@@ -23,7 +23,7 @@ const models = {
 const views = {
   renderIfLogIn: function (data) {
     if (!data) {
-      location.href = "/";
+      location.href = "/cowork";
     } else {
       document.getElementById("main").classList.remove("hide-before-log-in");
     }
