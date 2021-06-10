@@ -1,6 +1,5 @@
 const models = {
   orderNum: new URL(document.location).searchParams.get("number"),
-  // orderNum: location.href.split("=").pop(),
   fetchData: async function (urlPath) {
     try {
       const res = await fetch(urlPath);
@@ -23,7 +22,7 @@ const models = {
 const views = {
   renderIfLogIn: function (data) {
     if (!data) {
-      location.href = "/cowork";
+      location.href = `${window.origin}/cowork`;
     } else {
       document.getElementById("main").classList.remove("hide-before-log-in");
     }

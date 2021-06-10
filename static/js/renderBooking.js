@@ -49,7 +49,7 @@ const views = {
   totalPrice: 0,
   renderLogIn: function (data) {
     if (!data.data) {
-      location.href = "/cowork";
+      location.href = `${window.origin}/cowork`;
     } else {
       document.getElementById("main").classList.remove("hide-before-log-in");
     }
