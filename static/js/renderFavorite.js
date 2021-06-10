@@ -22,7 +22,7 @@ const models = {
 const views = {
   renderLogIn: function (data) {
     if (!data.data) {
-      location.href = "/";
+      location.href = "/cowork";
     } else {
       document.getElementById("main").classList.remove("hide-before-log-in");
     }
@@ -46,7 +46,7 @@ const views = {
     heart.appendChild(heartPendingLoader);
 
     const linkContainer = document.createElement("a");
-    linkContainer.href = `/attraction/${attraction.id}`;
+    linkContainer.href = `cowork/attraction/${attraction.id}`;
     const imageContainer = this.createElementWithClass("div", "image-container");
     const loadingSpinner = this.createElementWithClass("div", "loader");
     const attractionImage = this.createElementWithClass("img", "loading");
@@ -70,7 +70,7 @@ const views = {
 
     const bookAttractionBtn = this.createElementWithClass("a", "book-attraction-btn");
     bookAttractionBtn.textContent = "前往預定此行程";
-    bookAttractionBtn.href = `/attraction/${attraction.id}`;
+    bookAttractionBtn.href = `cowork/attraction/${attraction.id}`;
 
     attractionInfo.appendChild(attractionMrt);
     attractionInfo.appendChild(attractionCategory);
@@ -115,7 +115,7 @@ const views = {
       const message = document.createElement("span");
       message.textContent = "您沒有收藏的景點";
       const backLink = this.createElementWithClass("a", "back-to-index");
-      backLink.href = "/";
+      backLink.href = "/cowork";
       backLink.innerHTML = `<svg viewBox="0 0 24 24" style="pointer-events: none; width: 24px; height: 24px;"><g class="heart-icon"><path d="M12,21.4L10.6,20C5.4,15.4,2,12.3,2,8.5C2,5.4,4.4,3,7.5,3c1.7,0,3.4,0.8,4.5,2.1C13.1,3.8,14.8,3,16.5,3C19.6,3,22,5.4,22,8.5c0,3.8-3.4,6.9-8.6,11.5L12,21.4z"></path></g></svg><span>開始收藏景點</span>`;
       attractionsContainer.appendChild(message);
       attractionsContainer.appendChild(backLink);

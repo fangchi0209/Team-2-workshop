@@ -189,7 +189,7 @@ async function sendTransactionData(requestData) {
     return;
   }
 
-  location.href = `/thankyou?number=${orderNumber}`;
+  location.href = `cowork/thankyou?number=${orderNumber}`;
 }
 
 // helper function
