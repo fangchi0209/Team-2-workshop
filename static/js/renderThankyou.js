@@ -11,11 +11,11 @@ const models = {
     }
   },
   getUserData: async function () {
-    const userData = await this.fetchData("/api/user");
+    const userData = await this.fetchData("/cowork/api/user");
     return userData;
   },
   getOrderData: async function () {
-    const orderData = await this.fetchData(`/api/order/${this.orderNum}`);
+    const orderData = await this.fetchData(`/cowork/api/order/${this.orderNum}`);
     return orderData;
   },
 };
@@ -23,7 +23,7 @@ const models = {
 const views = {
   renderIfLogIn: function (data) {
     if (!data) {
-      location.href = "/";
+      location.href = "/cowork";
     } else {
       document.getElementById("main").classList.remove("hide-before-log-in");
     }

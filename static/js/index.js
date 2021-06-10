@@ -13,9 +13,9 @@ let keyword = null;
 async function getAttractionsData(pageNum, keyword = null) {
   let apiUrl;
   if (keyword) {
-    apiUrl = `/api/attractions?page=${pageNum}&keyword=${keyword}`;
+    apiUrl = `/cowork/api/attractions?page=${pageNum}&keyword=${keyword}`;
   } else {
-    apiUrl = `/api/attractions?page=${pageNum}`;
+    apiUrl = `/cowork/api/attractions?page=${pageNum}`;
   }
   const response = await fetch(apiUrl);
   const data = await response.json();
@@ -25,12 +25,24 @@ async function getAttractionsData(pageNum, keyword = null) {
 }
 
 // create single attraction item (called in showAttractions function)
-function createAttractionItem(attraction) {
+function createAttractionItem(attraction, favoriteIds) {
   const attractionBox = document.createElement("article");
   attractionBox.classList.add("attraction-box");
 
+  const heart = document.createElement("div");
+  heart.dataset.attractionId = attraction.id;
+  heart.classList.add("heart");
+  heart.classList.add("loading");
+  heart.innerHTML =
+    '<svg viewBox="0 0 24 24" style="pointer-events: none; width: 24px; height: 24px; display: block;"><g class="favorite"><path d="M12,21.4L10.6,20C5.4,15.4,2,12.3,2,8.5C2,5.4,4.4,3,7.5,3c1.7,0,3.4,0.8,4.5,2.1C13.1,3.8,14.8,3,16.5,3C19.6,3,22,5.4,22,8.5c0,3.8-3.4,6.9-8.6,11.5L12,21.4z"></path></g></svg>';
+
+  const heartPendingLoader = document.createElement("div");
+  heartPendingLoader.classList.add("heart-loader");
+
+  heart.appendChild(heartPendingLoader);
+
   const linkContainer = document.createElement("a");
-  linkContainer.href = `/attraction/${attraction.id}`;
+  linkContainer.href = `cowork/attraction/${attraction.id}`;
 
   const imageContainer = document.createElement("div");
   imageContainer.classList.add("image-container");
@@ -73,20 +85,38 @@ function createAttractionItem(attraction) {
   linkContainer.appendChild(attractionTextContainer);
 
   attractionBox.appendChild(linkContainer);
+  attractionBox.appendChild(heart);
+
+  if (favoriteIds.includes(attraction.id)) {
+    heart.classList.add("selected");
+  }
 
   attractionImage.addEventListener("load", () => {
     loadingSpinner.hidden = true;
     attractionImage.classList.remove("loading");
+    heart.classList.remove("loading");
   });
+
+  heart.addEventListener("click", () => toggleFavorite(heart));
 
   return attractionBox;
 }
 
 // show all attractions in the same page (called in loadAttractions function)
-function showAttractions() {
+async function showAttractions() {
   if (attractionsArray.length) {
+    const isLogIn = await logInStatus();
+    const favoriteIds = [];
+    if (isLogIn) {
+      const favorites = await getFavoriteData();
+      if (favorites) {
+        for (let favorite of favorites) {
+          favoriteIds.push(favorite.id);
+        }
+      }
+    }
     for (let attraction of attractionsArray) {
-      const attractionBox = createAttractionItem(attraction);
+      const attractionBox = createAttractionItem(attraction, favoriteIds);
       attractionsContainer.appendChild(attractionBox);
     }
   } else if (!attractionsContainer.firstChild) {

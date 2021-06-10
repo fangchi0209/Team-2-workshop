@@ -1,48 +1,25 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block css %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}" />
+{% endblock %} {% block title %}台北一日遊 - 首頁{% endblock %} {% block main %}
 
+<!-- hero and search bar -->
+<section class="hero-bg">
+  <div class="hero-container">
+    <h2>輕鬆享受台北一日悠閒</h2>
+    <p>探索每個角落，體驗城市的深度旅遊行程</p>
+    <form action="#" class="search-form" id="searchForm">
+      <input type="text" class="search-input" placeholder="輸入景點名稱查詢" id="searchKeyword" />
+      <button class="search-btn" id="searchBtn">
+        <img src="{{url_for('static',filename='images/icon_search.png')}}" alt="搜尋" />
+      </button>
+    </form>
+  </div>
+</section>
 
-{% block css %}
-    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+<!-- attractions gallery -->
+<section class="attractions-container" id="attractionsContainer"></section>
+
+{% endblock %} {% block script %}
+<script src="{{url_for('static', filename='js/favorite.js')}}"></script>
+<script src="{{url_for('static',filename='js/index.js')}}"></script>
 {% endblock %}
-
-
-{% block title %}台北一日遊 - 首頁{% endblock %}
-
-{% block main %}
-
-    <!-- hero and search bar -->
-    <section class="hero-bg">
-        <div class="hero-container">
-            <h2>輕鬆享受台北一日悠閒</h2>
-            <p>探索每個角落，體驗城市的深度旅遊行程</p>
-            <form action="#" class="search-form" id="searchForm">
-                <input type="text" class="search-input" placeholder="輸入景點名稱、種類、地點..." id="searchKeyword">
-                <button class="search-btn" id="searchBtn"><img src="{{url_for('static',filename='images/icon_search.png')}}" alt="搜尋"></button>
-            </form>
-        </div>
-    </section>
-
-    <!-- attractions gallery -->
-    <section class="attractions-container" id="attractionsContainer">
-    <!-- the structure of one attraction item ------------
-        <article class="attraction-box">
-            <a href="#">
-                <img src="http://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000848.jpg" alt="">
-                <div class="attraction-text-container">
-                    <p class="attraction-title">平安鐘</p>
-                    <div class="attraction-info">
-                        <p class="attraction-mrt">忠孝復興</p>
-                        <p class="attraction-category">公共藝術</p>
-                    </div>
-                </div>
-            </a>
-        </article>
-    ----------------------------------------------------->
-    </section>
-    
-{% endblock %}
-
-{% block script %}
-    <script src="{{url_for('static',filename='js/index.js')}}"></script>
-{% endblock %}
-

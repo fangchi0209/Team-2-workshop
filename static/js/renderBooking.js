@@ -1,7 +1,7 @@
 const models = {
   getUserLogInInfo: async function () {
     try {
-      const res = await fetch(`${window.origin}/api/user`);
+      const res = await fetch(`${window.origin}/cowork/api/user`);
       const logIndata = await res.json();
       return logIndata;
     } catch (err) {
@@ -10,7 +10,7 @@ const models = {
   },
   getBookingData: async function () {
     try {
-      const res = await fetch(`${window.origin}/api/booking`);
+      const res = await fetch(`${window.origin}/cowork/api/booking`);
       const data = await res.json();
       const bookingData = data.data;
       return bookingData;
@@ -20,7 +20,7 @@ const models = {
   },
   getUserInfo: async function () {
     try {
-      const res = await fetch("/api/user");
+      const res = await fetch("/cowork/api/user");
       const data = await res.json();
       const userData = data.data;
       return userData;
@@ -30,7 +30,7 @@ const models = {
   },
   removeBookingData: async function (requestBody) {
     try {
-      const res = await fetch("/api/booking", {
+      const res = await fetch("/cowork/api/booking", {
         method: "DELETE",
         headers: new Headers({
           "Content-Type": "application/json",
@@ -49,7 +49,7 @@ const views = {
   totalPrice: 0,
   renderLogIn: function (data) {
     if (!data.data) {
-      location.href = "/";
+      location.href = "/cowork";
     } else {
       document.getElementById("main").classList.remove("hide-before-log-in");
     }
@@ -89,7 +89,8 @@ const views = {
     const attractionAddress = this.createElementWithClass("p", "body-bold");
     attractionAddress.innerHTML = `地點：<span class="body-reg">${data.attraction.address}</span>`;
     const deleteIcon = this.createElementWithClass("img", "delete");
-    deleteIcon.src = "../static/images/icon_delete.png";
+    deleteIcon.src = "/cowork/images/icon_delete.png";
+
     deleteIcon.alt = "刪除預定行程";
 
     bookingDetail.appendChild(attractionHeader);
