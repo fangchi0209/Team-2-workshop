@@ -23,6 +23,9 @@
               <li class="hide" id="logOut" hidden>登出系統</li>
             </ul>
           </nav>
+          <div class="menu-btn">
+            <div class="menu-btn-burger"></div>
+          </div>
         </div>
       </div>
     </header>
@@ -171,6 +174,7 @@
 
     <script src="{{url_for('static', filename='js/isLogIn.js')}}"></script>
     <script src="{{url_for('static', filename='js/logInSignUp.js')}}"></script>
+    <script src="{{url_for('static', filename='js/navbar.js')}}"></script>
     <script src="{{url_for('static', filename='js/navbarBooking.js')}}"></script>
     <script src="{{url_for('static', filename='js/navbarFavorite.js')}}"></script>
     {% block script %}{% endblock %}
