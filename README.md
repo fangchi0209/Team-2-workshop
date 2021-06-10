@@ -16,8 +16,9 @@
 
 2. B 與 F1 fork host repo 到自己的 github repo，clone 到本機
 
-3a. B 將所有後端程式新增到自己的 repo，發 merge 到 develop 的 PR 給 H
-3b. F1 將所有前端程式新增到自己的 repo，發 merge 到 develop 的 PR 給 H
+3.
+ - B 將所有後端程式新增到自己的 repo，發 merge 到 develop 的 PR 給 H
+ - F1 將所有前端程式新增到自己的 repo，發 merge 到 develop 的 PR 給 H
 
 4. H confirm 兩個 PR， 組成一個有前後端程式的專案
 
@@ -30,11 +31,13 @@
 
 2. 地圖功能由 F2 用 map.js 分開製作
 
-3. a. 由 H 開立我的收藏功能所需的 get / post /delete api 規格與實作流程  https://app.swaggerhub.com/apis-docs/fangchi0209/favoriteAPI/1.0.0#/
-3. b. H 與 F1, B 討論調整 api 規格
+3.
+ - 由 H 開立我的收藏功能所需的 get / post /delete api 規格與實作流程  https://app.swaggerhub.com/apis-docs/fangchi0209/favoriteAPI/1.0.0#/
+ - H 與 F1, B 討論調整 api 規格
 
-4. a. 由 B 負責我的收藏後端 db 建置與 api 建置
-4. b. 由 F1 負責我的收藏前端串接 api 與 UI 圖示製作
+4.
+ - 由 B 負責我的收藏後端 db 建置與 api 建置
+ - 由 F1 負責我的收藏前端串接 api 與 UI 圖示製作
 
 
 #### [ To do list ]
