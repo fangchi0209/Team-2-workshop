@@ -29,13 +29,13 @@ def favorite():
 	return render_template("favorite.html")
 
 #Api
-app.register_blueprint(attractionsApi, url_prefix="/api")
-app.register_blueprint(attractionApi, url_prefix="/api")
-app.register_blueprint(ordersApi, url_prefix="/api")
-app.register_blueprint(orderApi, url_prefix="/api")
-app.register_blueprint(favoriteApi, url_prefix="/api")
-app.register_blueprint(userApi, url_prefix="/api")
-app.register_blueprint(bookingApi, url_prefix="/api")
+app.register_blueprint(attractionsApi, url_prefix="cowork/api")
+app.register_blueprint(attractionApi, url_prefix="cowork/api")
+app.register_blueprint(ordersApi, url_prefix="cowork/api")
+app.register_blueprint(orderApi, url_prefix="cowork/api")
+app.register_blueprint(favoriteApi, url_prefix="cowork/api")
+app.register_blueprint(userApi, url_prefix="cowork/api")
+app.register_blueprint(bookingApi, url_prefix="cowork/api")
 
 if __name__ == "__main__":
 	app.run(host="0.0.0.0", port=5000, debug=True)
