@@ -70,7 +70,7 @@ const views = {
 
     const bookAttractionBtn = this.createElementWithClass("a", "book-attraction-btn");
     bookAttractionBtn.textContent = "前往預定此行程";
-    bookAttractionBtn.href = `cowork/attraction/${attraction.id}`;
+    bookAttractionBtn.href = `${window.origin}/cowork/attraction/${attraction.id}`;
 
     attractionInfo.appendChild(attractionMrt);
     attractionInfo.appendChild(attractionCategory);

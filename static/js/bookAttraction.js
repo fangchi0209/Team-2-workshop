@@ -57,7 +57,7 @@ document.getElementById("bookingBtn").addEventListener("click", (evt) => {
             .then((res) => res.json())
             .then((data) => {
               if (data.ok) {
-                location.href = "cowork/booking";
+                location.href = `${window.origin}/cowork/booking`;
               } else if (data.error) {
                 console.log(data.message.split(":")[1]);
               }
