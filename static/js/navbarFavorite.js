@@ -3,7 +3,7 @@ document.getElementById("favoriteLink").addEventListener("click", () => {
     .then((res) => res.json())
     .then((data) => {
       if (data.data) {
-        location.href = "cowork/favorite";
+        location.href = `${window.origin}/cowork/favorite`;
       } else {
         document.getElementById("logIn").classList.add("slide-in");
         document.getElementById("logIn").classList.add("show");

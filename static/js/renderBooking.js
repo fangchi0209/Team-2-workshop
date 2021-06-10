@@ -89,7 +89,7 @@ const views = {
     const attractionAddress = this.createElementWithClass("p", "body-bold");
     attractionAddress.innerHTML = `地點：<span class="body-reg">${data.attraction.address}</span>`;
     const deleteIcon = this.createElementWithClass("img", "delete");
-    deleteIcon.src = "../static/images/icon_delete.png";
+    deleteIcon.src = "{{url_for('static', filename='images/icon_delete.png')}}";
     deleteIcon.alt = "刪除預定行程";
 
     bookingDetail.appendChild(attractionHeader);
