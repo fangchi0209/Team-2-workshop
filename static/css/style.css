@@ -172,6 +172,61 @@ h1 > a:active {
   color: #666666;
 }
 
+/****** hamburger menu ******/
+
+.menu-btn {
+  display: none;
+  margin-right: 10px;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-btn-burger {
+  width: 24px;
+  height: 3px;
+  border-radius: 3px;
+  background-color: var(--text-grey);
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-btn-burger::before,
+.menu-btn-burger::after {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 3px;
+  border-radius: 3px;
+  background-color: var(--text-grey);
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-btn-burger::before {
+  transform: translateY(-6px);
+}
+
+.menu-btn-burger::after {
+  transform: translateY(6px);
+}
+
+/* menu animation */
+.menu-btn.open .menu-btn-burger {
+  transform: translateX(-24px);
+  background-color: transparent;
+}
+
+.menu-btn.open .menu-btn-burger::before {
+  transform: rotate(45deg) translate(17px, -17px);
+}
+
+.menu-btn.open .menu-btn-burger::after {
+  transform: rotate(-45deg) translate(17px, 17px);
+}
+
 /********** main **********/
 
 main {
@@ -438,10 +493,43 @@ footer p {
 
   h1 {
     margin-left: 10px;
+    z-index: 10;
+  }
+
+  .menu-btn {
+    display: flex;
+    position: absolute;
+    right: 10px;
+  }
+
+  /* toggle nav bar */
+  .header-navbar {
+    z-index: 5;
+    display: block;
+    position: absolute;
+    top: -170px;
+    transition: all 0.4s ease-in-out;
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 100%;
+  }
+
+  .header-navbar.show {
+    top: 54px;
+  }
+
+  .header-navbar ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 15px;
+    padding: 15px 0 20px;
   }
 
   .header-navbar ul li {
-    font-size: 14px;
+    font-size: 18px;
+    padding-bottom: 5px;
+    padding-left: 40px;
+    border-bottom: 3px solid #44889955;
   }
 }
 
@@ -449,9 +537,5 @@ footer p {
 @media only screen and (max-width: 340px) {
   h1 {
     font-size: 24px;
-  }
-
-  .header-navbar ul li {
-    font-size: 14px;
   }
 }
