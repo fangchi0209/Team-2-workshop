@@ -39,7 +39,7 @@ bookingDateInput.addEventListener("focus", () => {
 
 document.getElementById("bookingBtn").addEventListener("click", (evt) => {
   evt.preventDefault();
-  fetch(`${window.origin}/api/user`)
+  fetch(`${window.origin}/cowork/api/user`)
     .then((res) => res.json())
     .then((data) => {
       if (data.data) {
@@ -47,7 +47,7 @@ document.getElementById("bookingBtn").addEventListener("click", (evt) => {
           emptyFieldReminder(bookingDateInput, "日期欄位不得為空白");
         } else {
           const requestBody = JSON.stringify(getBookingInfo());
-          fetch("/api/booking", {
+          fetch("/cowork/api/booking", {
             method: "POST",
             headers: new Headers({
               "Content-Type": "application/json",

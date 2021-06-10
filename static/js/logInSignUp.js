@@ -131,7 +131,7 @@ logInForm.addEventListener("submit", (evt) => {
 
     let responseStatus;
 
-    fetch(`${window.origin}/api/user`, {
+    fetch(`${window.origin}/cowork/api/user`, {
       method: "PATCH",
       headers: new Headers({
         "Content-Type": "application/json",
@@ -197,7 +197,7 @@ signUpForm.addEventListener("submit", (evt) => {
 
     let responseStatus;
 
-    fetch(`${window.origin}/api/user`, {
+    fetch(`${window.origin}/cowork/api/user`, {
       method: "POST",
       headers: new Headers({
         "Content-Type": "application/json",
@@ -245,7 +245,7 @@ for (let inputField of inputFields) {
 const logOut = document.getElementById("logOut");
 
 logOut.addEventListener("click", () => {
-  fetch("/api/user", { method: "DELETE" })
+  fetch("/cowork/api/user", { method: "DELETE" })
     .then((res) => res.json())
     .then((data) => {
       if (data.ok) {

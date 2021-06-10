@@ -10,7 +10,7 @@ let attractionData = {};
 
 // ========== get data ===========
 async function getData() {
-  const res = await fetch(`/api/attraction/${attractionId}`);
+  const res = await fetch(`/cowork/api/attraction/${attractionId}`);
   const data = await res.json();
   attractionData = data["data"];
 }

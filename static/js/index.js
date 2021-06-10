@@ -13,9 +13,9 @@ let keyword = null;
 async function getAttractionsData(pageNum, keyword = null) {
   let apiUrl;
   if (keyword) {
-    apiUrl = `/api/attractions?page=${pageNum}&keyword=${keyword}`;
+    apiUrl = `/cowork/api/attractions?page=${pageNum}&keyword=${keyword}`;
   } else {
-    apiUrl = `/api/attractions?page=${pageNum}`;
+    apiUrl = `/cowork/api/attractions?page=${pageNum}`;
   }
   const response = await fetch(apiUrl);
   const data = await response.json();

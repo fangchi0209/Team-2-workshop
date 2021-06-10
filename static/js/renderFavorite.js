@@ -1,7 +1,7 @@
 const models = {
   getUserLogInInfo: async function () {
     try {
-      const res = await fetch(`${window.origin}/api/user`);
+      const res = await fetch(`${window.origin}/cowork/api/user`);
       const logIndata = await res.json();
       return logIndata;
     } catch (err) {
@@ -10,7 +10,7 @@ const models = {
   },
   getFavoriteData: async function () {
     try {
-      const res = await fetch(`${window.origin}/api/favorite`);
+      const res = await fetch(`${window.origin}/cowork/api/favorite`);
       const data = await res.json();
       return data.data;
     } catch (err) {
