@@ -1,16 +1,6 @@
 # Team-2-workshop
 
 #### Teamwork Distribution
-| 李芳岐 (簡稱H, F2)                    | 李震瑋 (簡稱B)                            | 魏伊廷 (簡稱F1)                             |
-|-------------------------------------|------------------------------------------|-------------------------------------------|
-| repo host / deploy / map developer  | back-end code-base provider / developer  | front-end code-base provider / developer  |
-|-------------------------------------|------------------------------------------|-------------------------------------------|
-| 開 API (/api/favorite)<br>          | 新增 app.route("/favorite")<br>           | 首頁加愛心<br>                              |
-| attraction.html 裡新增 map.js<br>    | post / get / delete methods<br>          | attraction page 加愛心<br>                 |
-| deploy on EC2<br>                   | favorite table in MySQL<br>              | favorite page (html)<br>                  |
-| <br>                                | 新增檢查是否重複收藏<br>                    | nav bar include favorite page<br>         |
-| <br>                                | 撰寫前後端工作流程<br>                      | attraction.html 裡新增 愛心.js              |
-
 
 <table>
   <tr>
@@ -24,8 +14,9 @@
     <td>front-end code-base provider / developer </td>
   </tr>
   <tr>
-    <td>開 API (/api/favorite)<br>
+    <td>建立 API (/api/favorite)<br>
       attraction.html 裡新增 map.js<br>
+      build database & table in EC2<br>
       deploy on EC2<br></td>
     <td>新增 app.route("/favorite")<br>
        post / get / delete methods<br>
@@ -36,7 +27,8 @@
       attraction page 加愛心<br>
       favorite page (html)<br>
       nav bar include favorite page<br>
-      attraction.html 裡新增 愛心.js</td>
+      attraction.html 裡新增 愛心.js<br>
+      漢堡選單 (RWD)</td>
 </table>
 
 
@@ -72,28 +64,6 @@
 4.
  - 由 B 負責我的收藏後端 db 建置與 api 建置
  - 由 F1 負責我的收藏前端串接 api 與 UI 圖示製作
-
-
-#### [ To do list ]
-##### F: 首頁加愛心
-##### F: attraction page 加愛心
-##### F: favorite page (html)
-##### F: nav bar (include favorite page)
-##### B: 新增 app.route("/favorite")
-##### B: post / get / delete
-##### B: table
-##### H: 開 API (/api/favorite)
-##### H+F: attraction.html 裡新增 map.js + 愛心.js
-##### H: map.js GET 經緯度
-##### B: 撰寫前後端工作流程
-
-| 李芳岐 (簡稱H, F2)                  | 李震瑋 (簡稱B)                     | 魏伊廷 (簡稱F1)                     |
-|-----------------------------------|-----------------------------------|-----------------------------------|
-| 開 API (/api/favorite)<br>        | 新增 app.route("/favorite")<br>    | 首頁加愛心<br>                      |
-| attraction.html 裡新增 map.js<br>  | post / get / delete methods<br>   | attraction page 加愛心<br>         |
-| deploy on EC2<br>                 | favorite table in MySQL<br>       | favorite page (html)<br>          |
-| <br>                              | 新增檢查是否重複收藏<br>             | nav bar include favorite page<br> |
-| <br>                              | 撰寫前後端工作流程<br>               | attraction.html 裡新增 愛心.js      |
 
 
 #### [ 網頁前後端動作 ]
