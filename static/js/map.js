@@ -1,5 +1,5 @@
 let attSite = window.location.href;
-let site_id = attSite.split("/")[4];
+let site_id = attSite.split("/").pop();
 let mymap;
 let marker;
 let popup;
@@ -22,10 +22,8 @@ async function attractionsite(attractionId) {
 
             marker = L.marker([latitude, longitude]).addTo(mymap);
             marker.bindPopup(address).openPopup();
-            
+
         })
 }
 
 attractionsite(site_id)
-
-
