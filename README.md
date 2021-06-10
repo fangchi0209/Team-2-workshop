@@ -14,9 +14,17 @@
 
 <table>
   <tr>
-    <td>項次</td>
-    <td>品名</td>
-    <td>描述</td>
+    <td>李芳岐 (簡稱H, F2)</td>
+    <td>李震瑋 (簡稱B) </td>
+    <td>魏伊廷 (簡稱F1)  </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td>repo host / deploy / map developer</td>
+    <td>back-end code-base provider / developer </td>
+    <td>front-end code-base provider / developer </td>
   </tr>
 </table>
 
