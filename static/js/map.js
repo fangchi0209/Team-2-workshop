@@ -5,7 +5,7 @@ let marker;
 let popup;
 
 async function attractionsite(attractionId) {
-    await fetch("/api/attraction/" + `${attractionId}`)
+    await fetch("/cowork/api/attraction/" + `${attractionId}`)
         .then(response => {
             return response.json()
         }).then(res => {
