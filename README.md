@@ -1,4 +1,4 @@
-# Team-2-workshop
+# Git/GitHub Collaboration Workshop
 https://www.taipeitoursite.com/cowork
 
 #### Teamwork Distribution
