@@ -24,12 +24,12 @@ https://www.taipeitoursite.com/cowork
        favorite table in MySQL<br>
        新增檢查是否重複收藏<br>
        撰寫前後端工作流程</td>
-    <td>首頁加愛心<br>
-      attraction page 加愛心<br>
-      favorite page (html)<br>
+    <td>首頁, 景點頁 愛心圖示 toggle / loading effect<br>
+      首頁, 景點頁 串 POST, DELET api<br>
+      favorite page layout<br>
+      favorite page 串 GET api<br>
       nav bar include favorite page<br>
-      attraction.html 裡新增 愛心.js<br>
-      漢堡選單 (RWD)</td>
+      toggle menu RWD on mobile </td>
 </table>
 
 
