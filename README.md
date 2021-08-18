@@ -1,5 +1,5 @@
 # Git/GitHub Collaboration Workshop
-### https://www.taipeitoursite.com/cowork
+### Demo: https://www.taipeitoursite.com/cowork
 
 ## Teamwork Distribution
 
@@ -10,9 +10,9 @@
     <td>魏伊廷 (簡稱F1)  </td>
   </tr>
   <tr>
-    <td>repo host / deploy / map developer</td>
-    <td>back-end code-base provider / developer </td>
-    <td>front-end code-base provider / developer </td>
+    <td>Back-End: Repo Host, Site Deploy,  Front-End: map feature development</td>
+    <td>Back-End Developer (my favorite feature), Back-End code base provider </td>
+    <td>Front-End Developer (my favorite feature), Front-End code base provider</td>
   </tr>
   <tr>
     <td>Host collaboration Repo, confirm Pull Request from B, F1<br>
@@ -28,32 +28,18 @@
     <td>各頁面愛心圖示 toggle / loading effect<br>
       收藏頁 layout, 串 GET api render 畫面<br>
       首頁、景點頁、收藏頁 串 GET api 顯示收藏狀態; 串 POST/DELETE api 做收藏互動 <br>
-      nav bar include favorite, add hamburger menu for RWD</td>
+      nav bar include favorite page, add hamburger menu for RWD</td>
 </table>
 
 <br>
 
-## [新增：我的收藏功能與頁面、個別景點地圖]
+## [新增功能：我的景點收藏功能與頁面、個別景點地圖]
 
+### 協作分工示意圖
 
-### Initial Code Base Integration
+<img src="https://github.com/fangchi0209/Team-2-workshop/blob/main/協作流程圖.jpg" width="800">
 
-1. 由 H 先建立一個空的 index.html 作為 host repo ，有 main, develop branch
-
-2. B 與 F1 fork host repo 到自己的 github repo，clone 到本機
-
-3. 前後端 code base 合併
- - B 將所有後端程式新增到自己的 repo，發 merge 到 develop 的 PR 給 H
- - F1 將所有前端程式新增到自己的 repo，發 merge 到 develop 的 PR 給 H
-
-4. H confirm 兩個 PR， 組成一個有前後端程式的專案
-
-5. deploy 到 H 的 EC2 上	
-
-![GITHUB](https://github.com/fangchi0209/Team-2-workshop/blob/main/前後端整合與部屬.jpg)
-
-
-### 工作細部流程
+### 協作流程說明
 
 1. F1 與 F2 協調，確認 attraction.html 新增地圖功能上所需新增的 html 內容部分
 
@@ -73,11 +59,11 @@
   - H 於 EC2 上部署以 port 5000部署, 使用 nginx 代理與網域路徑'cowork'設定
   - F1, B 調整配合 'cowork' 路徑的設定 
 
+<br />
 
-![GITHUB](https://github.com/fangchi0209/Team-2-workshop/blob/main/協作流程圖.jpg)
+----
 
-
-### [ 景點收藏 網頁前後端動作 ]
+### [ 景點收藏：網頁前後端開發流程 ]
 
 #### 1.景點被收藏
 ##### 前端：使用者點擊index, attraction頁面愛心，先發GET user API判斷有沒有登入，有登入發POST給favorite API，沒登入出現登入面板
@@ -107,5 +93,26 @@
 ##### 前端：被點擊先發GET user API判斷有沒有登入，有登入導到favorite頁面，沒登入出現登入面板
 ##### 後端：判斷使用者是否登入
 
+<br />
+
+----
+
+<br />
+
+## 初始程式碼整合與部屬 （前後端分離架構）
+
+<img src="https://github.com/fangchi0209/Team-2-workshop/blob/main/前後端整合與部屬.jpg" width="650">
+
+1. 由 H 先建立一個空的 index.html 作為 host repo ，有 main, develop branch
+
+2. B 與 F1 fork host repo 到自己的 github repo，clone 到本機
+
+3. 前後端 code base 合併
+ - B 將所有後端程式新增到自己的 repo，發 merge 到 develop 的 PR 給 H
+ - F1 將所有前端程式新增到自己的 repo，發 merge 到 develop 的 PR 給 H
+
+4. H confirm 兩個 PR， 組成一個有前後端程式的專案
+
+5. deploy 到 H 的 EC2 上	
 
 
